@@ -1,0 +1,45 @@
+# Project: FPI
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = main.o Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o $(RES)
+LINKOBJ  = main.o Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o $(RES)
+LIBS =  -L"E:/Dev-Cpp/lib" bib/libconio.a bib/libconio_unicode.a  
+INCS =  -I"E:/Dev-Cpp/include" 
+CXXINCS =  -I"E:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"E:/Dev-Cpp/include/c++/3.4.2/backward"  -I"E:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"E:/Dev-Cpp/include/c++/3.4.2"  -I"E:/Dev-Cpp/include" 
+BIN  = Project1.exe
+CXXFLAGS = $(CXXINCS)   -w
+CFLAGS = $(INCS)   -w
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Project1.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Project1.exe" $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Imagem.o: Imagem.cpp
+	$(CPP) -c Imagem.cpp -o Imagem.o $(CXXFLAGS)
+
+bib/EasyBMP.o: bib/EasyBMP.cpp
+	$(CPP) -c bib/EasyBMP.cpp -o bib/EasyBMP.o $(CXXFLAGS)
+
+ImagemConvolution.o: ImagemConvolution.cpp
+	$(CPP) -c ImagemConvolution.cpp -o ImagemConvolution.o $(CXXFLAGS)
+
+ImagemOperators.o: ImagemOperators.cpp
+	$(CPP) -c ImagemOperators.cpp -o ImagemOperators.o $(CXXFLAGS)
+
+BarCode.o: BarCode.cpp
+	$(CPP) -c BarCode.cpp -o BarCode.o $(CXXFLAGS)
