@@ -29,9 +29,9 @@ BarCode::~BarCode() {}
 
 int BarCode::getPixPerBar() {
     
-    int barsize = ceil( (x2-x1)/BARDCODE_NBARS );
+    int barsize = (x2-x1)/BARDCODE_NBARS;
 
-    return barsize + floor(barsize/2);
+    return barsize;
 }
 
 
@@ -118,17 +118,22 @@ vector<int> BarCode::translateBinaryStream(vector<int> stream)
 vector<int> BarCode::translateBarCode()
 {
     vector<int> binaryStream;
-    
+
+    srand ( time(NULL) );
+
+
     for ( int y=0; y<1; y++ ) {
     
-        for ( int x=x1; x<x2; x+=pixPerBar ) {
+        for ( int x=x1 +pixPerBar/2; x<x2; x+=(pixPerBar)) {
             
             //cout<<image.getR(x,y)<<endl;
             int media=0;
-            for(int i=-1; i<=1; i++)
-                media+=image.getR(x,y);
+            for(int i=-2; i<=2; i++)
+                media+=image.getR(x+i,y);
             
-            if ( media > 128 ){
+            //cout << media/3 << endl;
+            
+            if ( media/5 > 128 ){
                 binaryStream.push_back(0);
                 cout<<" ";
             }
