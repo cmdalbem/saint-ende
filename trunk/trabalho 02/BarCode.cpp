@@ -9,6 +9,15 @@ using namespace std;
 
 BarCode::BarCode() {}
 
+BarCode::BarCode(Imagem nuimage)
+{
+    image = nuimage;
+    
+    this->findCodeBar();
+    
+    pixPerBar = getPixPerBar();
+}
+
 BarCode::BarCode(int nux1, int nuy1, int nux2, int nuy2, Imagem nuimage)
 {
     image = nuimage;
@@ -19,8 +28,6 @@ BarCode::BarCode(int nux1, int nuy1, int nux2, int nuy2, Imagem nuimage)
     y2 = nuy2;
     
     pixPerBar = getPixPerBar();
-    
-    cout<<"pixPerBar="<<pixPerBar<<endl;
 }
     
 
@@ -31,7 +38,40 @@ int BarCode::getPixPerBar() {
     
     int barsize = (x2-x1)/BARDCODE_NBARS;
 
+//    int barsize=0;
+//    for( int x=x1; image.getR(x,0)==0; x++ )
+//        barsize++;
+
     return barsize;
+}
+
+
+
+void BarCode::findCodeBar()
+{
+    
+    int framex1=0;
+    while( image.getR(framex1,image.getH()/2)==255 ) //encontra lado esquerdo da margem
+        framex1++;
+    
+    int framex2=image.getW()-1;
+    while( image.getR(framex2,image.getH()/2)==255 ) //encontra lado direito da margem
+        framex2--;
+        
+    x1=framex1;
+    while( image.getR(x1,image.getH() * RELATIVE_CODEBAR_POS )==0 ) //pula a margem esquerda
+        x1++;
+    while( image.getR(x1,image.getH() * RELATIVE_CODEBAR_POS )==255 ) //encontra o inicio do codigo de barras
+        x1++;
+        
+    x2=framex2;
+    while( image.getR(x2,image.getH() * RELATIVE_CODEBAR_POS )==0 ) //pula a margem direita
+        x2--;
+    while( image.getR(x2,image.getH() * RELATIVE_CODEBAR_POS )==255 ) //encontra o fim do codigo de barras
+        x2--;
+    x2 = x2+1;
+      
+    y1 = y2 = image.getH() * 0.875; //podemos usar mesmos y1 e y2 para o caso de ler apenas uma linha de pixels do código
 }
 
 
@@ -122,18 +162,18 @@ vector<int> BarCode::translateBarCode()
     srand ( time(NULL) );
 
 
-    for ( int y=0; y<1; y++ ) {
-    
-        for ( int x=x1 +pixPerBar/2; x<x2; x+=(pixPerBar)) {
+    //for ( int y=0; y<1; y++ ) {
+    int y = y1 + ((y2-y1)/2);
+        for ( int x=x1 +pixPerBar/2; x<x2; x+=pixPerBar ) {
             
-            //cout<<image.getR(x,y)<<endl;
+            //cout<<"image.getR("<<x<<","<<y<<") = "<<image.getR(x,y)<<endl;
             int media=0;
-            for(int i=-2; i<=2; i++)
+            for(int i=-1; i<=1; i++)
                 media+=image.getR(x+i,y);
             
             //cout << media/3 << endl;
             
-            if ( media/5 > 128 ){
+            if ( media/3 > 128 ){
                 binaryStream.push_back(0);
                 cout<<" ";
             }
@@ -143,7 +183,7 @@ vector<int> BarCode::translateBarCode()
             }
         }
         cout<<endl;
-    }
+    //}
 
     return translateBinaryStream(binaryStream);
 }
