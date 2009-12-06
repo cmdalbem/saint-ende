@@ -64,7 +64,7 @@ void menuTransformations()
     cout<<"10. Convert to GrayScale"<<endl;
     cout<<endl;
     cout<<"11. Borders detection"<<endl;
-    cout<<"12. Tell me the Bar Code please"<<endl;
+    cout<<"12. Find And Tell Me The Bar Code Please"<<endl;
     cout<<endl;
     cout<<"default: Cancel"<<endl;          
     cout<<endl;
@@ -147,10 +147,10 @@ void menuTransformations()
             break;            
         case 12:
             {
-                BarCode codigodebarras(0, 0, bufferImage.getW(), bufferImage.getH(), bufferImage);
+                BarCode codigodebarras(bufferImage);
                 
                 vector<int> result = codigodebarras.translateBarCode();
-                
+ 
                 for(vector<int>::iterator it=result.begin(); it!=result.end(); it++)
                     cout<<*it;
                 cout<<endl;
