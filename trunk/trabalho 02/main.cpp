@@ -26,6 +26,7 @@ void menuLoadOption()
 		while( !originalImage.load(path) ) {
         cout << "Nao consegui abrir teu arquivo! Tenta de novo\a" << endl;
         cin >> path;
+        strcat(path,".bmp");
     }
     
     bufferImage.load(path);    
@@ -65,6 +66,8 @@ void menuTransformations()
     cout<<endl;
     cout<<"11. Borders detection"<<endl;
     cout<<"12. Find And Tell Me The Bar Code Please"<<endl;
+    cout<<"13. Find Internal Box Delimiters"<<endl;
+    cout<<"14. Find Conex Components"<<endl;
     cout<<endl;
     cout<<"default: Cancel"<<endl;          
     cout<<endl;
@@ -147,7 +150,7 @@ void menuTransformations()
             break;            
         case 12:
             {
-                BarCode codigodebarras(bufferImage);
+                BarCode codigodebarras(bufferImage); //inicializa BarCode apenas com a imagem, então o construtor encontrará o código de barras pra nós
                 
                 vector<int> result = codigodebarras.translateBarCode();
  
@@ -156,7 +159,26 @@ void menuTransformations()
                 cout<<endl;
             }
             WAIT;
-            break;            
+            break;
+       case 13:
+            {
+                Imagem temp = bufferImage;
+                bufferImage.convertToGrayScale();
+                bufferImage.limiarize(200);
+                bufferImage.findInternalBox();
+                temp.setInternalFrameX1( bufferImage.getInternalFrameX1() );
+                temp.setInternalFrameX2( bufferImage.getInternalFrameX2() );
+                temp.setInternalFrameY1( bufferImage.getInternalFrameY1() );
+                temp.setInternalFrameY2( bufferImage.getInternalFrameY2() );
+                bufferImage = temp;
+            }            
+            WAIT;
+            break;
+       case 14:
+            bufferImage.findConexComponents();
+            
+            WAIT;
+            break;
                       
     }    
 }

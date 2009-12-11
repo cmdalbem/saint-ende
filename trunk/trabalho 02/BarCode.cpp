@@ -51,23 +51,23 @@ void BarCode::findCodeBar()
 {
     
     int framex1=0;
-    while( image.getR(framex1,image.getH()/2)==255 ) //encontra lado esquerdo da margem
+    while( image.isWhitePix(framex1,image.getH()/2) ) //encontra lado esquerdo da margem
         framex1++;
     
     int framex2=image.getW()-1;
-    while( image.getR(framex2,image.getH()/2)==255 ) //encontra lado direito da margem
+    while( image.isWhitePix(framex2,image.getH()/2) ) //encontra lado direito da margem
         framex2--;
         
     x1=framex1;
-    while( image.getR(x1,image.getH() * RELATIVE_CODEBAR_POS )==0 ) //pula a margem esquerda
+    while( image.isBlackPix(x1,image.getH() * RELATIVE_CODEBAR_POS ) ) //pula a margem esquerda
         x1++;
-    while( image.getR(x1,image.getH() * RELATIVE_CODEBAR_POS )==255 ) //encontra o inicio do codigo de barras
+    while( image.isWhitePix(x1,image.getH() * RELATIVE_CODEBAR_POS ) ) //encontra o inicio do codigo de barras
         x1++;
         
     x2=framex2;
-    while( image.getR(x2,image.getH() * RELATIVE_CODEBAR_POS )==0 ) //pula a margem direita
+    while( image.isBlackPix(x2,image.getH() * RELATIVE_CODEBAR_POS ) ) //pula a margem direita
         x2--;
-    while( image.getR(x2,image.getH() * RELATIVE_CODEBAR_POS )==255 ) //encontra o fim do codigo de barras
+    while( image.isWhitePix(x2,image.getH() * RELATIVE_CODEBAR_POS ) ) //encontra o fim do codigo de barras
         x2--;
     x2 = x2+1;
       
@@ -163,23 +163,23 @@ vector<int> BarCode::translateBarCode()
 
 
     //for ( int y=0; y<1; y++ ) {
-    int y = y1 + ((y2-y1)/2);
+    int y = y1 + ((y2-y1)/2); //vai pro meio do código
         for ( int x=x1 +pixPerBar/2; x<x2; x+=pixPerBar ) {
             
             //cout<<"image.getR("<<x<<","<<y<<") = "<<image.getR(x,y)<<endl;
-            int media=0;
-            for(int i=-1; i<=1; i++)
-                media+=image.getR(x+i,y);
+//            int media=0;
+//            for(int i=-1; i<=1; i++)
+//                media+=image.getR(x+i,y);
+//            
+//            cout << media/3 << endl;
             
-            //cout << media/3 << endl;
-            
-            if ( media/3 > 128 ){
+            if ( /*media/3*/ image.getR(x,y) > MIDTOM ){
                 binaryStream.push_back(0);
-                cout<<" ";
+            //    cout<<" ";
             }
             else{
                 binaryStream.push_back(1);
-                cout<<(char)178;
+            //    cout<<(char)178;
             }
         }
         cout<<endl;

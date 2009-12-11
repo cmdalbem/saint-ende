@@ -6,6 +6,10 @@
 #include "bib\EasyBMP.h"
 #include "definitions.h"
 
+
+
+
+
 class Imagem
 {
     private:
@@ -14,7 +18,9 @@ class Imagem
         BMP image;
 		int h, w; //height, widht
 		char imagePath[MAX_URL];
-		
+
+		int internalFrameX1, internalFrameX2, internalFrameY1, internalFrameY2; //working frame (quadro que será considerado)
+
 		
 		int truncaValor(int valor);
 		void zeraBufalo(int* bufalo);
@@ -29,9 +35,23 @@ class Imagem
         int getR(int x, int y);
         int getB(int x, int y);
         int getG(int x, int y);
+        bool isWhitePix(int x, int y);
+        bool isBlackPix(int x, int y);        
+        void setR(int x, int y, int value);
+        void setB(int x, int y, int value);
+        void setG(int x, int y, int value);   
         
         int getH();
         int getW();
+        
+        int getInternalFrameX1();
+        int getInternalFrameX2();
+        int getInternalFrameY1();
+        int getInternalFrameY2();   
+        void setInternalFrameX1(int x1);
+        void setInternalFrameX2(int x2);
+        void setInternalFrameY1(int y1);
+        void setInternalFrameY2(int y2);       
         
         
         // FUNÇÕES BÁSCIAS
@@ -49,6 +69,10 @@ class Imagem
         void fullDilate();
         
         void binaryInversion();
+        
+        void findInternalBox();
+        
+        void findConexComponents();
     
         
         // ImagemConvolution.cpp

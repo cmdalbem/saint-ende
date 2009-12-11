@@ -54,6 +54,12 @@ Imagem Imagem::operator-=(Imagem aImage)
 Imagem Imagem::operator=(Imagem aImage)
 {
     this->load( aImage.getImagePath() );
+    
+    this->internalFrameX1 = aImage.internalFrameX1;
+    this->internalFrameX2 = aImage.internalFrameX2;
+    this->internalFrameY1 = aImage.internalFrameY1;
+    this->internalFrameY2 = aImage.internalFrameY2;
+    
 
     for(int x=0; x < w; x++)
         

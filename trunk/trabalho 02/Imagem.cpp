@@ -3,6 +3,9 @@
 #include<conio2.h>
 
 #include "Imagem.h"
+#include "ConexComponent.h"
+
+#include <vector>
 
 using namespace std;
 
@@ -57,26 +60,41 @@ void Imagem::printMask(float *mask, int tam)
 
 int Imagem::getR(int x, int y) {
 
-    if( x>=0 && x<this->w && y>=0 && y<this->h )
-        return image(x,y)->Red;
-    else
-        return -1;
+    return image(x,y)->Red;
 }
 
 int Imagem::getB(int x, int y) {
 
-    if( x>=0 && x<this->w && y>0 && y<this->h )
-        return image(x,y)->Blue;
-    else
-        return -1;
+    return image(x,y)->Blue;
 }
 
 int Imagem::getG(int x, int y) {
 
-    if( x>=0 && x<this->w && y>=0 && y<this->h )
-        return image(x,y)->Green;
-    else
-        return -1;
+    return image(x,y)->Green;
+}
+
+bool Imagem::isWhitePix(int x, int y) {
+    
+    return (image(x,y)->Green == 255) && (image(x,y)->Red == 255) && (image(x,y)->Blue == 255);
+}
+bool Imagem::isBlackPix(int x, int y) {
+    
+    return (image(x,y)->Green == 0) && (image(x,y)->Red == 0) && (image(x,y)->Blue == 0);
+}
+
+void Imagem::setR(int x, int y, int value) {
+
+    image(x,y)->Red = (ebmpBYTE) value;
+}
+
+void Imagem::setB(int x, int y, int value) {
+
+    image(x,y)->Blue = (ebmpBYTE) value;    
+}
+
+void Imagem::setG(int x, int y, int value) {
+
+    image(x,y)->Green = (ebmpBYTE) value;
 }
 
 int Imagem::getH() {
@@ -87,11 +105,50 @@ int Imagem::getW() {
     return this->w;
 }
 
-
 char* Imagem::getImagePath() {
 
     return imagePath;
 }
+
+int Imagem::getInternalFrameX1() {
+
+    return internalFrameX1;
+}
+
+int Imagem::getInternalFrameX2() {
+
+    return internalFrameX2;
+}
+
+int Imagem::getInternalFrameY1() {
+
+    return internalFrameY1;
+}
+
+int Imagem::getInternalFrameY2() {
+
+    return internalFrameY2;
+}
+void Imagem::setInternalFrameX1(int x1) {
+
+    internalFrameX1 = x1;
+}
+
+void Imagem::setInternalFrameX2(int x2) {
+
+    internalFrameX2 = x2;
+}
+
+void Imagem::setInternalFrameY1(int y1) {
+
+    internalFrameY1 = y1;
+}
+
+void Imagem::setInternalFrameY2(int y2) {
+
+    internalFrameY2 = y2;
+}
+
 
 
 int Imagem::load(char path[]) {
@@ -102,6 +159,10 @@ int Imagem::load(char path[]) {
 
 			w = image.TellWidth();
 			h = image.TellHeight();
+			
+			internalFrameX1 = internalFrameY1 = 0;
+			internalFrameX2 = w-1;
+			internalFrameY2 = h-1;
 
 			image.ReadFromFile(path);
 
@@ -228,4 +289,65 @@ void Imagem::convertToGrayScale()
     }
 
     cout<<endl<<endl;
+}
+
+void Imagem::findInternalBox()
+{
+    internalFrameX1 = 0;
+    while( this->isWhitePix(internalFrameX1,this->getH()/2) ) //encontra lado esquerdo da margem
+        internalFrameX1++;
+    while( this->isBlackPix(internalFrameX1,this->getH()/2) ) //pula a margem esquerda
+        internalFrameX1++;        
+    
+    internalFrameX2 = this->getW()-1;
+    while( this->isWhitePix(internalFrameX2,this->getH()/2) ) //encontra lado direito da margem
+        internalFrameX2--;
+    while( this->isBlackPix(internalFrameX2,this->getH()/2) ) //pula a margem direita
+        internalFrameX2--;           
+        
+    internalFrameY1 = 0;
+    while( this->isWhitePix(this->getW()/2, internalFrameY1) ) //encontra lado esquerdo da margem
+        internalFrameY1++;
+    while( this->isBlackPix(this->getW()/2, internalFrameY1) ) //pula a margem esquerda
+        internalFrameY1++;        
+    
+    internalFrameY2 = this->getH()-1;
+    while( this->isWhitePix(this->getW()/2, internalFrameY2) ) //encontra lado direito da margem
+        internalFrameY2--;
+    while( this->isBlackPix(this->getW()/2, internalFrameY2) ) //pula a margem direita
+        internalFrameY2--;                       
+      
+    
+}
+
+void Imagem::findConexComponents()
+{
+    int x, y;
+    x = internalFrameX1+1;
+    y = internalFrameY1+1;
+    
+    vector<ConexComponent> components;
+    
+    Imagem drawingBuffer = *this;
+    
+    while( y < internalFrameY2 /*&& components.size()!=1*/) {
+
+        while( x < internalFrameX2-1 /*&& components.size()!=1*/) {
+
+            if( drawingBuffer.isWhitePix(x,y) )
+                components.push_back(ConexComponent(x,y,&drawingBuffer)); //dá um ponto qualquer do contorno do componente e
+            x++;
+        }
+        
+        y++;
+        x=internalFrameX1+1;
+    }
+    
+    cout<<components.size()<<" components found."<<endl;
+    
+    vector<ConexComponent>::iterator it;
+    for(it = components.begin(); it!=components.end(); it++)
+        it->drawBoundingBox(this);
+    
+    *this = drawingBuffer;    
 }
