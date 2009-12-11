@@ -1,7 +1,7 @@
 [Project]
 FileName=Project1.dev
 Name=FPI
-UnitCount=9
+UnitCount=11
 Type=1
 Ver=1
 ObjFiles=
@@ -129,6 +129,26 @@ BuildCmd=
 
 [Unit9]
 FileName=BarCode.cpp
+CompileCpp=1
+Folder=source
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit10]
+FileName=ConexComponent.h
+CompileCpp=1
+Folder=header
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit11]
+FileName=ConexComponent.cpp
 CompileCpp=1
 Folder=source
 Compile=1
