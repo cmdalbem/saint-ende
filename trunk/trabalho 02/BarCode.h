@@ -1,4 +1,4 @@
-#include "bib\EasyBMP.h"
+#include "bib/EasyBMP.h" // por favor usar essa barra --> / para separar diretorios
 #include "definitions.h"
 #include "Imagem.h"
 
@@ -10,15 +10,15 @@ using std::vector;
 
 class BarCode
 {
-    private:        
-        
+    private:
+
         // ATRIBUTOS
 
         Imagem image;
-     
+
         int x1, y1; //ponto superior esquerdo da barra na imagem
         int x2, y2; //ponto inferior direito da barra na imagem
-     
+
         int pixPerBar;
 
 
@@ -33,17 +33,18 @@ class BarCode
         void findCodeBar();
 
 
-    public:        
+    public:
         BarCode();
         BarCode(int x1, int y1, int x2, int y2, Imagem image);
         BarCode(Imagem image);
         ~BarCode();
-        
+
 
         // FUNÇÕES
 
-        vector<int> translateBarCode();        
-        
-        
-        
+        vector<int> translateBarCode();
+
+
+
 };
+
