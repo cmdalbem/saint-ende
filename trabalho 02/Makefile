@@ -3,44 +3,30 @@
 
 CPP  = colorgcc
 CC   = colorgcc
-RES  =
-OBJ  = main.o Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o $(RES)
-LINKOBJ  = main.o Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o $(RES)
 
-BIN  = fpi.o
-CXXFLAGS = -Wall
-CFLAGS = -Wall
-RM = rm -f
+OBJ  = Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o $(RES)
 
-.PHONY: all all-before all-after clean clean-custom
+FLAGS = -Wall -lstdc++
+all: $(OBJ) fpi
 
-all: $(BIN)
+fpi: main.cpp $(OBJ)
+	$(CPP) $< -o $@ $(OBJ) $(FLAGS)
 
+Imagem.o: Imagem.cpp Imagem.h
+	$(CPP) -c Imagem.cpp -o $@ $(FLAGS)
 
-clean: clean-custom
-	${RM} $(OBJ) $(BIN)
+bib/EasyBMP.o: bib/EasyBMP.cpp bib/EasyBMP.h
+	$(CPP) -c bib/EasyBMP.cpp -o $@ $(FLAGS)
 
-$(BIN): $(OBJ)
-	$(CPP) $(LINKOBJ) -o $@ $(LIBS)
-
-main.o: main.cpp
-	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
-
-Imagem.o: Imagem.cpp
-	$(CPP) -c Imagem.cpp -o Imagem.o $(CXXFLAGS)
-
-bib/EasyBMP.o: bib/EasyBMP.cpp
-	$(CPP) -c bib/EasyBMP.cpp -o bib/EasyBMP.o $(CXXFLAGS)
-
-ImagemConvolution.o: ImagemConvolution.cpp
-	$(CPP) -c ImagemConvolution.cpp -o ImagemConvolution.o $(CXXFLAGS)
+ImagemConvolution.o: ImagemConvolution.cpp ImagemConvolution.h
+	$(CPP) -c ImagemConvolution.cpp -o $@ $(FLAGS)
 
 ImagemOperators.o: ImagemOperators.cpp
-	$(CPP) -c ImagemOperators.cpp -o ImagemOperators.o $(CXXFLAGS)
+	$(CPP) -c ImagemOperators.cpp -o $@ $(FLAGS)
 
-BarCode.o: BarCode.cpp
-	$(CPP) -c BarCode.cpp -o BarCode.o $(CXXFLAGS)
+BarCode.o: BarCode.cpp BarCode.h
+	$(CPP) -c BarCode.cpp -o $@ $(FLAGS)
 
-ConexComponent.o: ConexComponent.cpp
-	$(CPP) -c ConexComponent.cpp -o ConexComponent.o $(CXXFLAGS)
+ConexComponent.o: ConexComponent.cpp ConexComponent.h
+	$(CPP) -c ConexComponent.cpp -o $@ $(FLAGS)
 
