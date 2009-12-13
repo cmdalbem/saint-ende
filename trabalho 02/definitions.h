@@ -2,11 +2,21 @@
 #define _DEFINITIONS_H_
 
 
+#ifdef WIN32
+#define CLEAR_STRING "cls"
+#define PAUSE system("pause")
+#else
+#define PAUSE ;
+#define getch getchar // é triste, nao tenho getch()
+#define CLEAR_STRING "clear"
+#endif
+
+
 //MACROS
 
 #define DEBUG cout<<__LINE__<<endl
 #define PRINTVAR(x) cout<<#x<<" = "<<x<<endl
-#define WAIT cout<<"done! press any key to continue..."; system("pause")
+#define WAIT cout<<"done! press any key to continue..."; PAUSE
 
 
 //CONSTANTES
@@ -21,9 +31,9 @@
 
 
 enum{
-    
+
     RIGHTGROUP = 0,
-    LEFTGROUP  = 1,    
+    LEFTGROUP  = 1,
 };
 
 
@@ -50,3 +60,4 @@ enum{
 
 
 #endif
+
