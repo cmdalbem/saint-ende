@@ -30,3 +30,6 @@ BarCode.o: BarCode.cpp BarCode.h
 ConexComponent.o: ConexComponent.cpp ConexComponent.h
 	$(CPP) -c ConexComponent.cpp -o $@ $(FLAGS)
 
+clean:
+	rm *.o ; rm bib/*.o
+
