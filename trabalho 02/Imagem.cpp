@@ -1,9 +1,9 @@
 #include<stdlib.h>
 #include<iostream>
-#include<conio2.h>
+//#include<conio2.h>
 
 #include "Imagem.h"
-#include "ConexComponent.h"
+//#include "ConexComponent.h"
 
 #include <vector>
 
@@ -19,15 +19,15 @@ using namespace std;
 int Imagem::truncaValor(int valor)
 {
 	    if( valor < 0 )
-					
+
 					return 0;
-			
+
 			else if( valor > 255 )
-			
+
 							return 255;
-						
+
 						else
-									
+
 								return valor;
 }
 
@@ -74,11 +74,11 @@ int Imagem::getG(int x, int y) {
 }
 
 bool Imagem::isWhitePix(int x, int y) {
-    
+
     return (image(x,y)->Green == 255) && (image(x,y)->Red == 255) && (image(x,y)->Blue == 255);
 }
 bool Imagem::isBlackPix(int x, int y) {
-    
+
     return (image(x,y)->Green == 0) && (image(x,y)->Red == 0) && (image(x,y)->Blue == 0);
 }
 
@@ -89,7 +89,7 @@ void Imagem::setR(int x, int y, int value) {
 
 void Imagem::setB(int x, int y, int value) {
 
-    image(x,y)->Blue = (ebmpBYTE) value;    
+    image(x,y)->Blue = (ebmpBYTE) value;
 }
 
 void Imagem::setG(int x, int y, int value) {
@@ -159,7 +159,7 @@ int Imagem::load(char path[]) {
 
 			w = image.TellWidth();
 			h = image.TellHeight();
-			
+
 			internalFrameX1 = internalFrameY1 = 0;
 			internalFrameX2 = w-1;
 			internalFrameY2 = h-1;
@@ -168,7 +168,7 @@ int Imagem::load(char path[]) {
 
 			return 1;
     }
-	else return 0;    		
+	else return 0;
 }
 
 
@@ -182,22 +182,21 @@ void Imagem::limiarize(double treshold)
 {
 
     for(  int  j=0  ;  j  <  h  ;  j++) {
-        
+
         for(  int  i=0  ;  i  <  w  ;  i++) {
-        
+
             if( image(i,j)->Red > treshold ) {
                 image(i,j)->Red = 255;
                 image(i,j)->Green = 255;
                 image(i,j)->Blue = 255;
             }
             else {
-                image(i,j)->Red = 0;    
+                image(i,j)->Red = 0;
                 image(i,j)->Green = 0;
-                image(i,j)->Blue = 0;                
+                image(i,j)->Blue = 0;
             }
         }
 
-        gotoxy(1,wherey()); cout<<"Limiarizing... "<<j*100/h +1<<"% ";
     }
     cout<<endl<<endl;
 }
@@ -206,9 +205,9 @@ void Imagem::limiarize(double treshold)
 void Imagem::binaryInversion()
 {
     for(  int  j=0  ;  j  <  h  ;  j++) {
-        
+
         for(  int  i=0  ;  i  <  w  ;  i++) {
-        
+
             if( image(i,j)->Red == 255 ) {
                 image(i,j)->Red = 0;
                 image(i,j)->Green = 0;
@@ -217,21 +216,22 @@ void Imagem::binaryInversion()
             else {
                 image(i,j)->Red = 255;
                 image(i,j)->Green = 255;
-                image(i,j)->Blue = 255;                
+                image(i,j)->Blue = 255;
             }
         }
 
-        gotoxy(1,wherey()); cout<<"Inverting... "<<j*100/h +1<<"% ";
     }
     cout<<endl<<endl;
 }
-    
+
 
 void Imagem::fullDilate()
 {
-    int matrix[3][3] = { 1, 1, 1,
-                       1, 1, 1,
-                       1, 1, 1 };
+    int matrix[3][3] = { { 1, 1, 1 } ,
+                         { 1, 1, 1 },
+                         { 1, 1, 1 }
+
+    };
 
     //bufalo é uma matriz que representa uma imagem temporária
     int* bufalo = (int*) malloc(sizeof(int)*w*h);
@@ -240,9 +240,9 @@ void Imagem::fullDilate()
 
     //algoritmo
     for(  int  j=1  ;  j  <  h-1  ;  j++) {
-        
+
         for(  int  i=1  ;  i  <  w-1  ;  i++) {
-        
+
             int paintThis = 0;
 
             for(  int  x=-1  ;  x  <  2  ;  x++)
@@ -253,29 +253,28 @@ void Imagem::fullDilate()
             bufalo[i+w*j] = paintThis;
         }
 
-        gotoxy(1,wherey()); cout<<"Dilating... "<<j*100/h +1<<"% ";
     }
     cout<<endl<<endl;
-    
+
 
     //passamos os valores da imagem temporária para a original
     for(int x=0; x < w; x++)
-			for(int y=0; y < h; y++) {       
-					
+			for(int y=0; y < h; y++) {
+
 			    image(x,y)->Red = (ebmpBYTE) bufalo[x+w*y];
 				image(x,y)->Blue = (ebmpBYTE) bufalo[x+w*y];
 				image(x,y)->Green = (ebmpBYTE) bufalo[x+w*y];
 			}
 }
-    
+
 
 void Imagem::convertToGrayScale()
 //função retirada do manual da biblioteca EasyBMP
-{    
+{
     for(  int  j=0  ;  j  <  h  ;  j++){
-        
+
         for(  int  i=0  ;  i  <  w  ;  i++){
-        
+
             int temp = (int) floor(   0.299*image(i,j)->Red
                                     + 0.587*image(i,j)->Green
                                     + 0.114*image(i,j)->Blue );
@@ -285,7 +284,6 @@ void Imagem::convertToGrayScale()
             image(i,j)->Blue =  (ebmpBYTE) temp;
         }
 
-        gotoxy(1,wherey()); cout<<"Converting to GrayScale... "<<j*100/h +1<<"% ";
     }
 
     cout<<endl<<endl;
@@ -297,27 +295,26 @@ void Imagem::findInternalBox()
     while( this->isWhitePix(internalFrameX1,this->getH()/2) ) //encontra lado esquerdo da margem
         internalFrameX1++;
     while( this->isBlackPix(internalFrameX1,this->getH()/2) ) //pula a margem esquerda
-        internalFrameX1++;        
-    
+        internalFrameX1++;
+
     internalFrameX2 = this->getW()-1;
     while( this->isWhitePix(internalFrameX2,this->getH()/2) ) //encontra lado direito da margem
         internalFrameX2--;
     while( this->isBlackPix(internalFrameX2,this->getH()/2) ) //pula a margem direita
-        internalFrameX2--;           
-        
+        internalFrameX2--;
+
     internalFrameY1 = 0;
     while( this->isWhitePix(this->getW()/2, internalFrameY1) ) //encontra lado esquerdo da margem
         internalFrameY1++;
     while( this->isBlackPix(this->getW()/2, internalFrameY1) ) //pula a margem esquerda
-        internalFrameY1++;        
-    
+        internalFrameY1++;
+
     internalFrameY2 = this->getH()-1;
     while( this->isWhitePix(this->getW()/2, internalFrameY2) ) //encontra lado direito da margem
         internalFrameY2--;
     while( this->isBlackPix(this->getW()/2, internalFrameY2) ) //pula a margem direita
-        internalFrameY2--;                       
-      
-    
+        internalFrameY2--;
+
 }
 
 void Imagem::findConexComponents()
@@ -325,11 +322,11 @@ void Imagem::findConexComponents()
     int x, y;
     x = internalFrameX1+1;
     y = internalFrameY1+1;
-    
+
     vector<ConexComponent> components;
-    
+
     Imagem drawingBuffer = *this;
-    
+
     while( y < internalFrameY2 /*&& components.size()!=1*/) {
 
         while( x < internalFrameX2-1 /*&& components.size()!=1*/) {
@@ -338,16 +335,17 @@ void Imagem::findConexComponents()
                 components.push_back(ConexComponent(x,y,&drawingBuffer)); //dá um ponto qualquer do contorno do componente e
             x++;
         }
-        
+
         y++;
         x=internalFrameX1+1;
     }
-    
+
     cout<<components.size()<<" components found."<<endl;
-    
+
     vector<ConexComponent>::iterator it;
     for(it = components.begin(); it!=components.end(); it++)
         it->drawBoundingBox(this);
-    
-    *this = drawingBuffer;    
+
+    *this = drawingBuffer;
 }
+

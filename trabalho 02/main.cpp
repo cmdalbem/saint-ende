@@ -1,11 +1,22 @@
 #include <iostream>
 #include <string>
-#include "conio2.h"
+
+//inclui porque aparentemente o dev já incluía pra ti mano
+#include <cstdlib>
+//#include <cstring>
+#include <limits>
+#include <algorithm>
 
 #include "Imagem.h"
 #include "BarCode.h"
 #include "definitions.h"
 
+#ifdef WIN32
+#define CLEAR_STRING "cls"
+#else
+#define getch getchar // é triste, nao tenho getch()
+#define CLEAR_STRING "clear"
+#endif
 
 using namespace std;
 
@@ -28,8 +39,8 @@ void menuLoadOption()
         cin >> path;
         strcat(path,".bmp");
     }
-    
-    bufferImage.load(path);    
+
+    bufferImage.load(path);
 }
 
 void menuSave()
@@ -43,15 +54,15 @@ void menuSave()
     cout << endl << "Imagem salva em "<< savename << endl;
     cout << "Abrindo imagem... (feche-a para continuar)" << endl << endl;
     system(savename);
-}        
+}
 
 void menuTransformations()
 {
     system("cls");
-    
+
     int option2;
-    
-    cout<<"1. Media (passa-baixas)"<<endl;  
+
+    cout<<"1. Media (passa-baixas)"<<endl;
     cout<<"2. Gaussiano"<<endl;
     cout<<"3. Derivada Primeira"<<endl;
     cout<<"4. Laplace"<<endl;
@@ -69,15 +80,14 @@ void menuTransformations()
     cout<<"13. Find Internal Box Delimiters"<<endl;
     cout<<"14. Find Conex Components"<<endl;
     cout<<endl;
-    cout<<"default: Cancel"<<endl;          
+    cout<<"default: Cancel"<<endl;
     cout<<endl;
-    
+
     cout<<"enter your option: ";
     cin >> option2;
     while(!cin){
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        gotoxy(20,wherey()-1); cout<<"                      "; gotoxy(20,wherey());
         cin >> option2;
     }
     switch(option2)
@@ -85,17 +95,17 @@ void menuTransformations()
         case 1:
             bufferImage.media();
             WAIT;
-            break;           
+            break;
         case 2:
-            bufferImage.gaussiano();   
+            bufferImage.gaussiano();
             WAIT;
             break;
         case 3:
-            bufferImage.derivadaPrimeira();      
+            bufferImage.derivadaPrimeira();
             WAIT;
             break;
         case 4:
-            bufferImage.laplaciano(); 
+            bufferImage.laplaciano();
             WAIT;
             break;
         case 5:
@@ -106,20 +116,19 @@ void menuTransformations()
             while(!cin){
                 cin.clear();
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                gotoxy(32,wherey()-1); cout<<" "; gotoxy(32,wherey());
                 cin >> n;
             }
 
-            bufferImage.customMask(n);  
+            bufferImage.customMask(n);
             WAIT;
-            break;                                                                                                                
+            break;
         case 6:
             bufferImage += originalImage;
             WAIT;
-            break;   
+            break;
         case 7:
             bufferImage -= originalImage;
-            WAIT;            
+            WAIT;
             break;
         case 8:
             int treshold;
@@ -140,20 +149,20 @@ void menuTransformations()
                 bufferImage.convertToGrayScale();
                 bufferImage.limiarize(200);
                 bufferImage.binaryInversion();
-                
-                Imagem limiarizada = bufferImage;            
-                
+
+                Imagem limiarizada = bufferImage;
+
                 bufferImage.fullDilate();
                 bufferImage -= limiarizada;
             }
             WAIT;
-            break;            
+            break;
         case 12:
             {
                 BarCode codigodebarras(bufferImage); //inicializa BarCode apenas com a imagem, então o construtor encontrará o código de barras pra nós
-                
+
                 vector<int> result = codigodebarras.translateBarCode();
- 
+
                 for(vector<int>::iterator it=result.begin(); it!=result.end(); it++)
                     cout<<*it;
                 cout<<endl;
@@ -171,45 +180,41 @@ void menuTransformations()
                 temp.setInternalFrameY1( bufferImage.getInternalFrameY1() );
                 temp.setInternalFrameY2( bufferImage.getInternalFrameY2() );
                 bufferImage = temp;
-            }            
+            }
             WAIT;
             break;
        case 14:
             bufferImage.findConexComponents();
-            
+
             WAIT;
             break;
-                      
-    }    
+
+    }
 }
 
 void mainMenu()
 {
     int option;
     do{
-        
-            system("cls");
-            gotoxy(1,1);
-            
+
+            system(CLEAR_STRING); //clear screen portavel u.u
+
             cout<<"LOADED: "<<bufferImage.getImagePath()<<endl;
-            cout<<endl;            
+            cout<<endl;
             cout<<"1. Load different image"<<endl;
             cout<<"2. Save image & display"<<endl;
             cout<<"3. Transformations"<<endl;
-            cout<<"4. EXIT"<<endl;          
+            cout<<"4. EXIT"<<endl;
             cout<<endl;
-            
+
             cout<<"enter your option: ";
             cin >> option;
             while(!cin){
                 cin.clear();
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                gotoxy(20,wherey()-1); cout<<"                         "; gotoxy(20,wherey());
                 cin >> option;
             }
-           
-            gotoxy(1,10);            
-            
+
             switch(option)
             {
                 case 1:
@@ -219,10 +224,10 @@ void mainMenu()
                     menuSave();
                     break;
                 case 3:
-                    menuTransformations();                    
+                    menuTransformations();
                     break;
             }
-            
+
     }while(option!=4);
 }
 
@@ -234,3 +239,4 @@ int main()
 
     mainMenu();
 }
+
