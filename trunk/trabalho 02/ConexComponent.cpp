@@ -1,4 +1,3 @@
-#include "bib\EasyBMP.h"
 #include "ConexComponent.h"
 #include <iostream>
 
@@ -13,12 +12,12 @@ ConexComponent::ConexComponent(int x, int y, Imagem *image)
     this->y2 = 0;
 
     xo = x;
-    yo = y;    
+    yo = y;
 
     area = 0;
     perimeter = 0;
 
-    
+
     this->findBoundingBox(xo,yo,image);
 
     //this->findArea(xo+2,yo+2,image);
@@ -27,8 +26,8 @@ ConexComponent::ConexComponent(int x, int y, Imagem *image)
 }
 
 ConexComponent::~ConexComponent() {}
-    
-    
+
+
 void ConexComponent::findBoundingBox(int x, int y, Imagem *image)
 {
     if( x < this->x1 )
@@ -39,18 +38,18 @@ void ConexComponent::findBoundingBox(int x, int y, Imagem *image)
         this->y1 = y;
     else if(y>this->y2)
            this->y2=y;
-        
+
 
     image->setGreenPix(x,y);
-    
-    
+
+
     for(int i=-1; i<2; i++)
         for(int j=-1; j<2; j++)
             if( image->isWhitePix(x+i,y+j) ) {
                 perimeter++;
-                findBoundingBox(x+i,y+j,image); 
+                findBoundingBox(x+i,y+j,image);
             }
-}    
+}
 
 void ConexComponent::drawBoundingBox(Imagem *image)
 {
@@ -68,14 +67,14 @@ void ConexComponent::drawBoundingFillBox(Imagem *image)
 {
     for(int i=x1; i<=x2; i++)
         for(int j=y1; j<=y2; j++) {
-            image->setRedPix(i,j);         
+            image->setRedPix(i,j);
         }
 }
 
 bool ConexComponent::isMarkedPix(int x, int y, Imagem *image)
 {
     return (image->getR(x,y)==0) && (image->getG(x,y)==255) && (image->getB(x,y)==0);
-}    
+}
 
 
 void ConexComponent::findArea(int x, int y, Imagem *image)
@@ -86,7 +85,7 @@ void ConexComponent::findArea(int x, int y, Imagem *image)
         for(int j=-1; j<2; j++)
             if( !isMarkedPix(x+i,y+j,image) ) {
                 area++;
-                findArea(x+i,y+j,image); 
+                findArea(x+i,y+j,image);
             }
 }
 
@@ -94,3 +93,4 @@ double ConexComponent::getCompacity()
 {
     return (perimeter*perimeter) / area;
 }
+

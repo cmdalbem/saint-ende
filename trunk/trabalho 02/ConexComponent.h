@@ -2,15 +2,14 @@
 #define _CONEXCOMPONENT_H_
 
 
-#include "bib\EasyBMP.h"
-
+#include "bib/EasyBMP.h"
 #include "Imagem.h"
 
 
 class ConexComponent
 {
-    private:        
-        
+    private:
+
         int area;
         int perimeter;
         int xo, yo; //um ponto qualquer pertencente à linha de borda do componente
@@ -19,24 +18,24 @@ class ConexComponent
 
         bool isMarkedPix(int x, int y, Imagem *image);
 
-    public:        
+    public:
         ConexComponent(int x, int y, Imagem *image);
         ~ConexComponent();
-        
+
 
         // FUNÇÕES
-        
+
         void findBoundingBox(int x, int y, Imagem *image);
-        
+
         void drawBoundingBox(Imagem *image);
-        
+
         void drawBoundingFillBox(Imagem *image);
-        
+
         void findArea(int x, int y, Imagem *image);
-        
+
         double getCompacity();
-        
-        
+
+
 };
 
 
@@ -44,3 +43,4 @@ class ConexComponent
 
 
 #endif
+

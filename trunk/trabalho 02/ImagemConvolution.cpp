@@ -1,12 +1,4 @@
-#include<stdlib.h>
-#include<iostream>
-//#include<conio2.h>
-
-#include "Imagem.h"
-
-using namespace std;
-
-
+#include "ImagemConvolution.h"
 
 void Imagem::convolucao_nxn(float *mask, int n)
 {
@@ -96,36 +88,36 @@ void Imagem::customMask(int n)
 
 void Imagem::laplaciano()
 {
-    float mask[3][3] = { -1, -1, -1,
-                         -1,  8, -1,
-                         -1, -1, -1 };
+    float mask[3][3] = {  {-1, -1, -1},
+                          {-1,  8, -1} ,
+                         {-1, -1, -1} };
 
     printMask((float*)mask,3);
     convolucao_nxn((float*)mask,3);
 }
 void Imagem::media()
 {
-    float mask[3][3] = { (float)1/9, (float)1/9, (float)1/9,
-                         (float)1/9, (float)1/9, (float)1/9,
-                         (float)1/9, (float)1/9, (float)1/9 };
+    float mask[3][3] = { {(float)1/9, (float)1/9, (float)1/9},
+                         {(float)1/9, (float)1/9, (float)1/9},
+                         {(float)1/9, (float)1/9, (float)1/9} };
 
     printMask((float*)mask,3);
     convolucao_nxn((float*)mask,3);
 }
 void Imagem::gaussiano()
 {
-    float mask[3][3] = { 0.0625, 0.125 ,0.0625,
-                         0.125,  0.25,  0.125,
-                         0.0625, 0.125 ,0.0625 };
+    float mask[3][3] = { {0.0625, 0.125 ,0.0625},
+                         {0.125,  0.25,  0.125},
+                         {0.0625, 0.125 ,0.0625} };
 
     printMask((float*)mask,3);
     convolucao_nxn((float*)mask,3);
 }
 void Imagem::derivadaPrimeira()
 {
-    float mask[3][3] = {  0, -1,  0,
-                         -1,  4, -1,
-                          0, -1,  0 };
+    float mask[3][3] = {  {0, -1,  0},
+                         {-1,  4, -1},
+                          {0, -1,  0} };
 
     printMask((float*)mask,3);
     convolucao_nxn((float*)mask,3);
