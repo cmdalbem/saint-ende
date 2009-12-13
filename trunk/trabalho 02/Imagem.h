@@ -39,10 +39,10 @@ class Imagem
         bool isBlackPix(int x, int y);
         void setR(int x, int y, int value);
         void setB(int x, int y, int value);
-        void setG(int x, int y, int value);   
+        void setG(int x, int y, int value);
         void setGreenPix(int x, int y);
         void setRedPix(int x, int y);
-        
+
         int getH();
         int getW();
 
@@ -67,6 +67,8 @@ class Imagem
         void convertToGrayScale();
 
         void limiarize(double treshold);
+
+        float bestLimiar();
 
         void fullDilate();
 

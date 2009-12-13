@@ -11,13 +11,6 @@
 #include "BarCode.h"
 #include "definitions.h"
 
-#ifdef WIN32
-#define CLEAR_STRING "cls"
-#else
-#define getch getchar // é triste, nao tenho getch()
-#define CLEAR_STRING "clear"
-#endif
-
 using namespace std;
 
 
@@ -58,7 +51,7 @@ void menuSave()
 
 void menuTransformations()
 {
-    system("cls");
+    system(CLEAR_STRING);
 
     int option2;
 
@@ -79,6 +72,7 @@ void menuTransformations()
     cout<<"12. Find And Tell Me The Bar Code Please"<<endl;
     cout<<"13. Find Internal Box Delimiters"<<endl;
     cout<<"14. Find Conex Components"<<endl;
+    cout <<"15. Crazy limiar" << endl;
     cout<<endl;
     cout<<"default: Cancel"<<endl;
     cout<<endl;
@@ -187,6 +181,10 @@ void menuTransformations()
             bufferImage.findConexComponents();
 
             WAIT;
+            break;
+       case 15:
+            bufferImage.convertToGrayScale();
+            cout << bufferImage.bestLimiar() << endl;
             break;
 
     }

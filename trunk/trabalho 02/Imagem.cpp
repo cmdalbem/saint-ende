@@ -210,9 +210,78 @@ void Imagem::limiarize(double treshold)
         }
 
     }
-    cout<<endl<<endl;
 }
 
+float Imagem::bestLimiar()
+{
+    float m1 = 0;
+
+    //média dos elementos nos cantos
+    for (int i=0; i < h; ++i)
+    {
+        m1 += image(0,i)->Red;
+        m1 += image(w,i)->Red;
+    }
+
+    for (int i=1; i < w-1; ++i)
+    {
+        m1 += image(i,0)->Red;
+        m1 += image(i,h)->Red;
+    }
+
+    m1 /= 2*h + 2*(w-1);
+    //end média
+
+    float m2 = 0;
+
+    //média dos elementos restantes
+    for (int i=1; i < w-1; ++i)
+        for (int j=1; j < h-1; ++j)
+            m2 += image(i,j)->Red;
+
+    m2 /= w + h - 4;
+    //end média
+
+    float lanterior = 0;
+    float latual = (m1 + m2)/2;
+
+    while (lanterior != latual)
+    {
+        m1 = 0; m2 = 0;
+        int quantos = 0;
+
+        for (int i=0; i < w; ++i)
+            for (int j=0; j < h; ++j)
+            {
+                if (image(i,j)->Red < latual)
+                {
+                    ++quantos;
+                    m1 += image(i,j)->Red;
+                }
+            }
+
+        m1 /= quantos;
+
+        quantos = 0;
+
+        for (int i=0; i < w; ++i)
+            for (int j=0; j < h; ++j)
+            {
+                if (image(i,j)->Red >= latual)
+                {
+                    ++quantos;
+                    m2 += image(i,j)->Red;
+                }
+            }
+
+        m2 /= quantos;
+
+        lanterior = latual;
+        latual = (m1+m2)/2;
+    }
+
+    return latual;
+}
 
 void Imagem::binaryInversion()
 {
@@ -233,7 +302,6 @@ void Imagem::binaryInversion()
         }
 
     }
-    cout<<endl<<endl;
 }
 
 
@@ -266,8 +334,6 @@ void Imagem::fullDilate()
         }
 
     }
-    cout<<endl<<endl;
-
 
     //passamos os valores da imagem temporária para a original
     for(int x=0; x < w; x++)
@@ -296,9 +362,7 @@ void Imagem::convertToGrayScale()
             image(i,j)->Blue =  (ebmpBYTE) temp;
         }
 
-    }
-
-    cout<<endl<<endl;
+    }
 }
 
 void Imagem::findInternalBox()
