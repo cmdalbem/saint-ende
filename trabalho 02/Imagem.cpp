@@ -96,6 +96,18 @@ void Imagem::setG(int x, int y, int value) {
 
     image(x,y)->Green = (ebmpBYTE) value;
 }
+void Imagem::setGreenPix(int x, int y)
+{
+    this->setR(x,y,0);
+    this->setG(x,y,255);
+    this->setB(x,y,0);
+}
+void Imagem::setRedPix(int x, int y)
+{
+    this->setR(x,y,255);
+    this->setG(x,y,0);
+    this->setB(x,y,0);
+}
 
 int Imagem::getH() {
     return this->h;
