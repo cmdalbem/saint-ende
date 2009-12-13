@@ -6,7 +6,7 @@
 
 #define DEBUG cout<<__LINE__<<endl
 #define PRINTVAR(x) cout<<#x<<" = "<<x<<endl
-#define WAIT cout<<"done! press any key to continue..."; getch()
+#define WAIT cout<<"done! press any key to continue..."; system("pause")
 
 
 //CONSTANTES

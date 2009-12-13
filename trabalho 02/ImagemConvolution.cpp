@@ -6,7 +6,8 @@
 
 using namespace std;
 
-
+
+
 void Imagem::convolucao_nxn(float *mask, int n)
 {
 
@@ -57,36 +58,39 @@ void Imagem::convolucao_nxn(float *mask, int n)
 
 void Imagem::customMask(int n)
 {
-    float mask[n][n];
-
-    for(int x=0; x<n; x++)
-        for(int y=0; y<n; y++)
-            mask[x][y] = 0;
-
-    cout<<"-> Matriz de Convolucao"<<endl<<endl;
-
-
-    //Entrada formatada de matriz
-
-    int posx=1, posy=wherey();
-    for(int y=0; y<n; y++){
-
-        for(int x=0; x<n; x++){
-
-            gotoxy( posx+(x+2)*8 , posy+y );
-
-            cin >> mask[x][y];
-            while(!cin){
-                cin.clear(); cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                gotoxy( posx+(x+2)*8 , posy+y ); cout<<" \a"; gotoxy( posx+(x+2)*8 , posy+y );
-                cin >> mask[x][y];
-            }
-
-        }
-    }
-
-    //Chamada da operação
-    convolucao_nxn((float*)mask,n);
+//    float mask[n][n];
+//
+//    for(int x=0; x<n; x++)
+//        for(int y=0; y<n; y++)
+//            mask[x][y] = 0;
+//
+//    cout<<"-> Matriz de Convolucao"<<endl<<endl;
+//
+//
+//    //Entrada formatada de matriz
+//
+//    int posx=1, posy=wherey();
+//    for(int y=0; y<n; y++){
+//
+//        for(int x=0; x<n; x++){
+//
+//            gotoxy( posx+(x+2)*8 , posy+y );
+//
+//            cin >> mask[x][y];
+//            while(!cin){
+//                cin.clear(); cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//                gotoxy( posx+(x+2)*8 , posy+y ); cout<<" \a"; gotoxy( posx+(x+2)*8 , posy+y );
+//                cin >> mask[x][y];
+//            }
+//
+//        }
+//    }
+//
+//    //Chamada da operação
+//    convolucao_nxn((float*)mask,n);
+//
+// PS.: OHN QUE PENA, isso não funciona sem a conio :(
+//
 }
 
 

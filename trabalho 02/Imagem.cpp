@@ -3,7 +3,7 @@
 //#include<conio2.h>
 
 #include "Imagem.h"
-//#include "ConexComponent.h"
+#include "ConexComponent.h"
 
 #include <vector>
 
