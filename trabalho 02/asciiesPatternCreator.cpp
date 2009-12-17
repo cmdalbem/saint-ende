@@ -1,4 +1,4 @@
-/*#include "imagem.h"
+#include "imagem.h"
 #include <iostream>
 #include <fstream>
 
@@ -16,7 +16,7 @@ int main() {
 	for(int i = 0; i < MAX_PATTERNS; i++) {
 
 		char patternPath[6];
-		sprintf(patternPath, "%c.bmp", patternsTable[i]);
+		sprintf(patternPath, "../../../Saint Ende - Soia's lab/%c.bmp", patternsTable[i]);
 
 		pattern.load(patternPath);
 
@@ -81,4 +81,3 @@ int main() {
 	}
 
 }
-*/
