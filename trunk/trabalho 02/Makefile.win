@@ -5,11 +5,11 @@ CPP  = g++.exe
 CC   = gcc.exe
 WINDRES = windres.exe
 RES  = 
-OBJ  = main.o Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o $(RES)
-LINKOBJ  = main.o Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o $(RES)
-LIBS =  -L"E:/Dev-Cpp/lib" bib/libconio.a bib/libconio_unicode.a  
-INCS =  -I"E:/Dev-Cpp/include" 
-CXXINCS =  -I"E:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"E:/Dev-Cpp/include/c++/3.4.2/backward"  -I"E:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"E:/Dev-Cpp/include/c++/3.4.2"  -I"E:/Dev-Cpp/include" 
+OBJ  = main.o Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o asciiesPatternCreator.o $(RES)
+LINKOBJ  = main.o Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o asciiesPatternCreator.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -lconio bib/libconio.a bib/libconio_unicode.a  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
 BIN  = Project1.exe
 CXXFLAGS = $(CXXINCS)   -w
 CFLAGS = $(INCS)   -w
@@ -46,3 +46,6 @@ BarCode.o: BarCode.cpp
 
 ConexComponent.o: ConexComponent.cpp
 	$(CPP) -c ConexComponent.cpp -o ConexComponent.o $(CXXFLAGS)
+
+asciiesPatternCreator.o: asciiesPatternCreator.cpp
+	$(CPP) -c asciiesPatternCreator.cpp -o asciiesPatternCreator.o $(CXXFLAGS)
