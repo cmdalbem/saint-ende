@@ -18,9 +18,6 @@ using namespace std;
 Imagem originalImage;
 Imagem bufferImage;
 
-
-
-
 void menuLoadOption()
 {
     cout<<"enter path: ";
@@ -72,8 +69,7 @@ void menuTransformations()
     cout<<"12. Find And Tell Me The Bar Code Please"<<endl;
     cout<<"13. Find Internal Box Delimiters"<<endl;
     cout<<"14. Find Conex Components"<<endl;
-    cout <<"15. Crazy limiar" << endl;
-    cout<<endl;
+    cout<<"15. Spatial Mapping" << endl;
     cout<<"default: Cancel"<<endl;
     cout<<endl;
 
@@ -179,14 +175,15 @@ void menuTransformations()
             break;
        case 14:
             bufferImage.findConexComponents();
-
             WAIT;
             break;
-       case 15:
-            bufferImage.convertToGrayScale();
-            cout << bufferImage.bestLimiar() << endl;
-            break;
 
+        case 15:
+            Point o[4] = { {5,10}, {10,10}, {10,4}, {5,5} };
+            Point p[4] = { {5,8}, {10,8}, {11,5}, {4,5} };
+            bufferImage.spatialMapping(o,p);
+            WAIT;
+            break;
     }
 }
 

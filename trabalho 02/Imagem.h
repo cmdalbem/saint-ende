@@ -5,11 +5,8 @@
 
 #include "bib/EasyBMP.h" // por favor usar essa barra --> / para separar diretorios
 #include "definitions.h"
-
-
-
-
-
+#include "linearAlgebra.h"
+
 class Imagem
 {
     private:
@@ -78,6 +75,7 @@ class Imagem
 
         void findConexComponents();
 
+        void spatialMapping(Point oldPos[4], Point newPos[4]);
 
         // ImagemConvolution.cpp
 

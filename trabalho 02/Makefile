@@ -4,7 +4,8 @@
 CPP  = colorgcc
 CC   = colorgcc
 
-OBJ  = Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o $(RES)
+OBJ  = Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o \
+        linearAlgebra.o
 
 FLAGS = -Wall -lstdc++
 all: $(OBJ) fpi
@@ -29,6 +30,9 @@ BarCode.o: BarCode.cpp BarCode.h
 
 ConexComponent.o: ConexComponent.cpp ConexComponent.h
 	$(CPP) -c ConexComponent.cpp -o $@ $(FLAGS)
+
+linearAlgebra.o: linearAlgebra.cpp linearAlgebra.h
+	$(CPP) -c $< -o $@ $(FLAGS)
 
 clean:
 	rm *.o ; rm bib/*.o
