@@ -183,7 +183,6 @@ int Imagem::load(char path[]) {
 	else return 0;
 }
 
-
 int Imagem::save(char path[]) {
 
     return image.WriteToFile( path );
@@ -210,77 +209,6 @@ void Imagem::limiarize(double treshold)
         }
 
     }
-}
-
-float Imagem::bestLimiar()
-{
-    float m1 = 0;
-
-    //média dos elementos nos cantos
-    for (int i=0; i < h; ++i)
-    {
-        m1 += image(0,i)->Red;
-        m1 += image(w,i)->Red;
-    }
-
-    for (int i=1; i < w-1; ++i)
-    {
-        m1 += image(i,0)->Red;
-        m1 += image(i,h)->Red;
-    }
-
-    m1 /= 2*h + 2*(w-1);
-    //end média
-
-    float m2 = 0;
-
-    //média dos elementos restantes
-    for (int i=1; i < w-1; ++i)
-        for (int j=1; j < h-1; ++j)
-            m2 += image(i,j)->Red;
-
-    m2 /= w + h - 4;
-    //end média
-
-    float lanterior = 0;
-    float latual = (m1 + m2)/2;
-
-    while (lanterior != latual)
-    {
-        m1 = 0; m2 = 0;
-        int quantos = 0;
-
-        for (int i=0; i < w; ++i)
-            for (int j=0; j < h; ++j)
-            {
-                if (image(i,j)->Red < latual)
-                {
-                    ++quantos;
-                    m1 += image(i,j)->Red;
-                }
-            }
-
-        m1 /= quantos;
-
-        quantos = 0;
-
-        for (int i=0; i < w; ++i)
-            for (int j=0; j < h; ++j)
-            {
-                if (image(i,j)->Red >= latual)
-                {
-                    ++quantos;
-                    m2 += image(i,j)->Red;
-                }
-            }
-
-        m2 /= quantos;
-
-        lanterior = latual;
-        latual = (m1+m2)/2;
-    }
-
-    return latual;
 }
 
 void Imagem::binaryInversion()
@@ -423,5 +351,69 @@ void Imagem::findConexComponents()
         it->drawBoundingBox(this);
 
     *this = drawingBuffer;
+}
+
+void Imagem::spatialMapping(Point oldPos[4], Point newPos[4])
+{
+    float **linSys = mallocMatrix(8,9);
+
+    //4 primeiras equacoes com incognitas c1 a c4
+    for(int i=0; i < 4; ++i)
+    {
+        linSys[i][0] = oldPos[i].x;
+        linSys[i][1] = oldPos[i].y;
+        linSys[i][2] = oldPos[i].x * oldPos[i].y;
+        linSys[i][3] = 1;
+
+        //incognitas c5 a c8 tem coeficiente 0
+        for (int k=4; k < 8; ++k)
+            linSys[i][k] = 0;
+
+        linSys[i][8] = newPos[i].x;
+    }
+
+    for(int i=0; i < 4; ++i)
+    {
+        //incognitas c1 a c4 tem coeficiente 0
+        for (int k=0; k < 4; ++k)
+            linSys[i+4][k] = 0;
+
+        //4 primeiras equacoes com incognitas c5 a c8
+        linSys[i+4][4] = oldPos[i].x;
+        linSys[i+4][5] = oldPos[i].y;
+        linSys[i+4][6] = oldPos[i].x * oldPos[i].y;
+        linSys[i+4][7] = 1;
+
+        linSys[i+4][8] = newPos[i].y;
+    }
+
+    float *c = solve(linSys,8,9);
+
+    for (int i = 0; i < 8; i += 1)
+    {
+        cout << c[i] << endl;
+    }
+
+    BMP newImage;
+    newImage.SetSize(getW()+100,getH()+100);
+
+    for (int i=0; i < getW(); ++i)
+    {
+        for (int j=0; j < getH(); ++j)
+        {
+//            Point p = { i, j };
+//            Point p1 = spatialTransform(c,p);
+
+//            if (p1.x <= getW() && p1.y <= getH())
+//            {
+//                newImage(p1.x,p1.y)->Red = image(p.x,p.y)->Red;
+//                newImage(p1.x,p1.y)->Green = image(p.x,p.y)->Green;
+//                newImage(p1.x,p1.y)->Blue = image(p.x,p.y)->Blue;
+//            }
+        }
+    }
+
+    newImage.WriteToFile( "lol.bmp" );
+
 }
 
