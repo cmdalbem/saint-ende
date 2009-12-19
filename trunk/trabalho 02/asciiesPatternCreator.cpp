@@ -1,4 +1,4 @@
-#include "imagem.h"
+/*#include "imagem.h"
 #include <iostream>
 #include <fstream>
 
@@ -81,3 +81,4 @@ int main() {
 	}
 
 }
+*/

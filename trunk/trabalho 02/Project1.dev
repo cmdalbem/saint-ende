@@ -1,7 +1,7 @@
 [Project]
 FileName=Project1.dev
 Name=FPI
-UnitCount=12
+UnitCount=11
 Type=1
 Ver=1
 ObjFiles=
@@ -159,14 +159,4 @@ BuildCmd=
 
 [Unit13]
 FileName=asciiesPatternCreator.cpp
-
-[Unit12]
-FileName=asciiesPatternCreator.cpp
-CompileCpp=1
-Folder=source
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
 
