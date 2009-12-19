@@ -43,7 +43,7 @@ void menuSave()
 
     cout << endl << "Imagem salva em "<< savename << endl;
     cout << "Abrindo imagem... (feche-a para continuar)" << endl << endl;
-    system(savename);
+    //system(savename);
 }
 
 void menuTransformations()
@@ -179,8 +179,8 @@ void menuTransformations()
             break;
 
         case 15:
-            Point o[4] = { {5,10}, {10,10}, {10,4}, {5,5} };
-            Point p[4] = { {5,8}, {10,8}, {11,5}, {4,5} };
+            Point o[4] = { {124,460}, {590,430}, {521,34}, {123,117} };
+            Point p[4] = { {0,0}, {0,480},{640,480}, {640,0} };
             bufferImage.spatialMapping(o,p);
             WAIT;
             break;

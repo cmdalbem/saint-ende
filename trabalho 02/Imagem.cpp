@@ -236,7 +236,7 @@ void Imagem::binaryInversion()
 void Imagem::fullDilate()
 {
     int matrix[3][3] = { { 1, 1, 1 } ,
-                         { 1, 1, 1 },
+                         { 1, 0, 1 },
                          { 1, 1, 1 }
 
     };
@@ -389,31 +389,46 @@ void Imagem::spatialMapping(Point oldPos[4], Point newPos[4])
 
     float *c = solve(linSys,8,9);
 
-    for (int i = 0; i < 8; i += 1)
-    {
-        cout << c[i] << endl;
-    }
-
     BMP newImage;
-    newImage.SetSize(getW()+100,getH()+100);
+    newImage.SetSize(getW(),getH());
 
     for (int i=0; i < getW(); ++i)
     {
         for (int j=0; j < getH(); ++j)
         {
-//            Point p = { i, j };
-//            Point p1 = spatialTransform(c,p);
+            Point p = { i, j };
+            Point p1 = spatialTransform(c,p);
 
-//            if (p1.x <= getW() && p1.y <= getH())
-//            {
-//                newImage(p1.x,p1.y)->Red = image(p.x,p.y)->Red;
-//                newImage(p1.x,p1.y)->Green = image(p.x,p.y)->Green;
-//                newImage(p1.x,p1.y)->Blue = image(p.x,p.y)->Blue;
-//            }
+            if ( (p1.x < getW() && p1.x >= 0 ) && (p1.y < getH() && p1.y >= 0) )
+            {
+                newImage(p1.x,p1.y)->Red = image(p.x,p.y)->Red;
+                newImage(p1.x,p1.y)->Green = image(p.x,p.y)->Green;
+                newImage(p1.x,p1.y)->Blue = image(p.x,p.y)->Blue;
+            }
         }
     }
 
-    newImage.WriteToFile( "lol.bmp" );
+    copy(newImage);
 
+}
+
+void Imagem::copy(BMP im)
+{
+    if (getW() != im.TellWidth() || getH() != im.TellHeight())
+    {
+        DEBUG;
+        cout << "Image sizes do not match, I wont do this sir!" << endl;
+        return;
+    }
+
+    for (int i=0; i < getW(); ++i)
+    {
+        for (int j=0; j < getH(); ++j)
+        {
+            image(i,j)->Red = im(i,j)->Red;
+            image(i,j)->Green = im(i,j)->Green;
+            image(i,j)->Blue = im(i,j)->Blue;
+        }
+    }
 }
 
