@@ -79,7 +79,7 @@ Point spatialTransform(float *c, Point p)
     p1.x = c[0]*p.x + c[1]*p.y + c[2]*p.x*p.y + c[3];
     p1.y = c[4]*p.x + c[5]*p.y + c[6]*p.x*p.y + c[7];
 
-    cout << p1.x << " " << p1.y << " " << endl;
+    //cout << p1.x << " " << p1.y << " " << endl;
     return p1;
 }
 

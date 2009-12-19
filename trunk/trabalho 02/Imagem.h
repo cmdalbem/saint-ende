@@ -77,6 +77,8 @@ class Imagem
 
         void spatialMapping(Point oldPos[4], Point newPos[4]);
 
+        void copy(BMP im);
+
         // ImagemConvolution.cpp
 
         void laplaciano();
