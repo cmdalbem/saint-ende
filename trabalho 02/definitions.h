@@ -8,7 +8,7 @@
 #else
 #define PAUSE ;
 #define getch getchar // é triste, nao tenho getch()
-#define CLEAR_STRING "clear"
+#define CLEAR_STRING "lear"
 #endif
 
 

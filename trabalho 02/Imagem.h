@@ -6,7 +6,11 @@
 #include "bib/EasyBMP.h" // por favor usar essa barra --> / para separar diretorios
 #include "definitions.h"
 #include "linearAlgebra.h"
-
+#include <vector>
+
+using std::vector;
+
+class ConexComponent;
 class Imagem
 {
     private:
@@ -23,6 +27,8 @@ class Imagem
 		void zeraBufalo(int* bufalo);
         void printMask(float *mask,int tam);
         void convolucao_nxn(float *mask, int n); //ImagemConvolution.cpp
+
+        vector<ConexComponent*> conexComponents;
 
     public:
         Imagem(){};
@@ -71,6 +77,8 @@ class Imagem
 
         void binaryInversion();
 
+        void negative();
+
         void findInternalBox();
 
         void findConexComponents();
@@ -78,6 +86,8 @@ class Imagem
         void spatialMapping(Point oldPos[4], Point newPos[4]);
 
         void copy(BMP im);
+
+        unsigned char* getArray();
 
         // ImagemConvolution.cpp
 
