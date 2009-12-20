@@ -11,6 +11,8 @@
 #include "BarCode.h"
 #include "definitions.h"
 
+#include "ConexComponent.h"
+
 using namespace std;
 
 
@@ -146,11 +148,12 @@ void menuTransformations()
                 Imagem limiarizada = bufferImage;
 
                 bufferImage.fullDilate();
-                bufferImage.binaryInversion();
+                bufferImage -= limiarizada;
             }
             WAIT;
             break;
         case 12:
+            // Find And Tell Me The Bar Code Please
             {
                 BarCode codigodebarras(bufferImage); //inicializa BarCode apenas com a imagem, então o construtor encontrará o código de barras pra nós
 
@@ -177,7 +180,25 @@ void menuTransformations()
             WAIT;
             break;
        case 14:
-            bufferImage.findConexComponents();
+            {
+                bufferImage.convertToGrayScale();
+                bufferImage.limiarize(200);
+                bufferImage.binaryInversion();
+                Imagem limiarizada = bufferImage;
+                bufferImage.fullDilate();
+                bufferImage -= limiarizada;
+                                
+                bufferImage.findConexComponents();
+                
+                bufferImage.conexComponents[4]->tellTimeOfClock(&limiarizada);
+
+                bufferImage = limiarizada;
+                
+//                vector<ConexComponent*>::iterator it;
+//                for(it = bufferImage.conexComponents.begin(); it!=bufferImage.conexComponents.end(); it++)
+//                    (*it)->tellTimeOfClock(bufferImage);
+            }
+            
             WAIT;
             break;
 
@@ -189,13 +210,6 @@ void menuTransformations()
                 WAIT;
                 break;
             }
-        case 16:
-            {
-                float lim = bufferImage.bestLimiar();
-                bufferImage.limiarize(lim);
-                WAIT;
-                break;
-            }
         case 17:
                 bufferImage.findEdge();
                 break;
@@ -204,6 +218,13 @@ void menuTransformations()
         case 18:
                 bufferImage.negative();
                 break;
+        case 16:
+            {
+                float lim = bufferImage.bestLimiar();
+                bufferImage.limiarize(lim);
+                WAIT;
+                break;
+            }
     }
 }
 

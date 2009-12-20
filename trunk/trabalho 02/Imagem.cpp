@@ -70,15 +70,6 @@ int Imagem::getG(int x, int y) {
     return image(x,y)->Green;
 }
 
-bool Imagem::isWhitePix(int x, int y) {
-
-    return (image(x,y)->Green == 255) && (image(x,y)->Red == 255) && (image(x,y)->Blue == 255);
-}
-bool Imagem::isBlackPix(int x, int y) {
-
-    return (image(x,y)->Green == 0) && (image(x,y)->Red == 0) && (image(x,y)->Blue == 0);
-}
-
 void Imagem::setR(int x, int y, int value) {
 
     image(x,y)->Red = (ebmpBYTE) value;
@@ -105,6 +96,7 @@ void Imagem::setRedPix(int x, int y)
     this->setG(x,y,0);
     this->setB(x,y,0);
 }
+
 
 int Imagem::getH() {
     return this->h;
@@ -160,10 +152,17 @@ void Imagem::setInternalFrameY2(int y2) {
 
 vector<ConexComponent*> getConexComponents() {
 
-	return conexComponents;
+bool Imagem::isWhitePix(int x, int y) {
+
+    return (image(x,y)->Green == 255) && (image(x,y)->Red == 255) && (image(x,y)->Blue == 255);
+}
+bool Imagem::isBlackPix(int x, int y) {
+
+    return (image(x,y)->Green == 0) && (image(x,y)->Red == 0) && (image(x,y)->Blue == 0);
 }
 
-int Imagem::load(const char path[]) {
+
+int Imagem::load(char path[]) {
 
     if( image.ReadFromFile(path) ) {
 
@@ -212,6 +211,7 @@ void Imagem::limiarize(double threshold)
 }
 
 void Imagem::binaryInversion()
+//inverte uma imagem limiarizada
 {
     for(  int  j=0  ;  j  <  h  ;  j++) {
 
@@ -302,7 +302,8 @@ void Imagem::convertToGrayScale()
             image(i,j)->Blue =  (ebmpBYTE) temp;
         }
 
-    }
+    }
+
 }
 
 void Imagem::findInternalBox()
@@ -334,12 +335,13 @@ void Imagem::findInternalBox()
 }
 
 void Imagem::findConexComponents()
+//Aplicar essa função depois de já ter feito detecção de bordas
 {
     int x, y;
     x = internalFrameX1+1;
     y = internalFrameY1+1;
 
-    vector<ConexComponent> components;
+//    static vector<ConexComponent*> conexComponents;
 
     Imagem drawingBuffer = *this;
 
@@ -348,7 +350,7 @@ void Imagem::findConexComponents()
         while( x < internalFrameX2-1 /*&& components.size()!=1*/) {
 
             if( drawingBuffer.isWhitePix(x,y) )
-                components.push_back(ConexComponent(x,y,&drawingBuffer)); //dá um ponto qualquer do contorno do componente e
+                this->conexComponents.push_back(new ConexComponent(x,y,&drawingBuffer)); //dá um ponto qualquer do contorno do componente e
             x++;
         }
 
@@ -356,13 +358,14 @@ void Imagem::findConexComponents()
         x=internalFrameX1+1;
     }
 
-    cout<<components.size()<<" components found."<<endl;
+    cout<<conexComponents.size()<<" components found."<<endl;
 
-    vector<ConexComponent>::iterator it;
-    for(it = components.begin(); it!=components.end(); it++)
-        it->drawBoundingBox(this);
+//    desenhar drawingBoxes
+//    vector<ConexComponent>::iterator it;
+//    for(it = conexComponents.begin(); it!=conexComponents.end(); it++)
+//        it->drawBoundingBox(this);
 
-    *this = drawingBuffer;
+    //*this = drawingBuffer;
 }
 
 void Imagem::spatialMapping(Point oldPos[4], Point newPos[4])
