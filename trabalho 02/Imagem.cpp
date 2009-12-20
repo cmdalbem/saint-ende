@@ -448,7 +448,7 @@ void Imagem::copy(BMP im)
 
 float Imagem::bestLimiar()
 {
-    float m1 = 0;
+    int m1 = 0;
 
     int quantos = 0;
 
@@ -466,7 +466,7 @@ float Imagem::bestLimiar()
     }
     //end média
 
-    float m2 = 0;
+    int m2 = 0;
     quantos = 0;
 
     //média dos elementos restantes
@@ -477,10 +477,10 @@ float Imagem::bestLimiar()
     m2 = m2/quantos;
     //end média
 
-    float lanterior = 0;
-    float latual = (m1 + m2)/2;
+    int lanterior = 0;
+    int latual = (m1 + m2)/2;
 
-    while ( fabs(lanterior - latual) >= EPSOLON)
+    while ( lanterior != latual)
     {
         m1 = 0; m2 = 0;
         int quantos = 0;
