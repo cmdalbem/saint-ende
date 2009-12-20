@@ -50,7 +50,7 @@ Imagem Imagem::operator-=(Imagem aImage)
 }
 
 
-Imagem Imagem::operator=(Imagem aImage)
+Imagem& Imagem::operator=(Imagem aImage)
 {
     this->load( aImage.getImagePath() );
 

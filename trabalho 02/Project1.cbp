@@ -12,22 +12,36 @@
 				<Option compiler="gcc" />
 			</Target>
 		</Build>
-		<Linker>
-			<Add option="bib\libconio.a" />
-			<Add option="bib\libconio_unicode.a" />
-		</Linker>
-		<Unit filename="main.cpp" />
+		<Unit filename="BarCode.cpp" />
+		<Unit filename="BarCode.h" />
+		<Unit filename="ConexComponent.cpp" />
+		<Unit filename="ConexComponent.h" />
 		<Unit filename="Imagem.cpp" />
 		<Unit filename="Imagem.h" />
-		<Unit filename="bib\EasyBMP.cpp" />
-		<Unit filename="definitions.h" />
 		<Unit filename="ImagemConvolution.cpp" />
 		<Unit filename="ImagemOperators.cpp" />
-		<Unit filename="BarCode.h" />
-		<Unit filename="BarCode.cpp" />
-		<Unit filename="ConexComponent.h" />
-		<Unit filename="ConexComponent.cpp" />
-		<Unit filename="asciiesPatternCreator.cpp" />
+		<Unit filename="bib\EasyBMP.cpp" />
+		<Unit filename="definitions.h" />
+		<Unit filename="kht\buffer_2d.cpp" />
+		<Unit filename="kht\buffer_2d.h" />
+		<Unit filename="kht\eigen.cpp" />
+		<Unit filename="kht\eigen.h" />
+		<Unit filename="kht\kht.cpp" />
+		<Unit filename="kht\kht.h" />
+		<Unit filename="kht\linking.cpp" />
+		<Unit filename="kht\linking.h" />
+		<Unit filename="kht\peak_detection.cpp" />
+		<Unit filename="kht\peak_detection.h" />
+		<Unit filename="kht\subdivision.cpp" />
+		<Unit filename="kht\subdivision.h" />
+		<Unit filename="kht\types.h" />
+		<Unit filename="kht\voting.cpp" />
+		<Unit filename="kht\voting.h" />
+		<Unit filename="linearAlgebra.cpp" />
+		<Unit filename="linearAlgebra.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="texture.cpp" />
+		<Unit filename="texture.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
