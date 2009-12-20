@@ -92,7 +92,7 @@ class Imagem
 
         void findInternalBox();
 
-        void findConexComponents();
+        void findConexComponents(int maxComponents);
 
         void spatialMapping(Point oldPos[4], Point newPos[4]);
 

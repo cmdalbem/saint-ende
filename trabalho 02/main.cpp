@@ -69,8 +69,8 @@ void menuTransformations()
     cout<<endl;
     cout<<"11. Borders detection"<<endl;
     cout<<"12. Find And Tell Me The Bar Code Please"<<endl;
-    cout<<"13. Find Internal Box Delimiters"<<endl;
-    cout<<"14. Find Conex Components"<<endl;
+    cout<<"13. Find Internal Box Delimiters (use-me antes de procurar os componentes)"<<endl;
+    cout<<"14. Find Conex Components And Tell Me What Time Is It"<<endl;
     cout<<"15. Spatial Mapping" << endl;
     cout<<"16. Crazy Limiar" << endl;
     cout<<"17. Find Edge" << endl;
@@ -155,6 +155,9 @@ void menuTransformations()
         case 12:
             // Find And Tell Me The Bar Code Please
             {
+                bufferImage.convertToGrayScale();
+                bufferImage.limiarize(200);
+                
                 BarCode codigodebarras(bufferImage); //inicializa BarCode apenas com a imagem, então o construtor encontrará o código de barras pra nós
 
                 vector<int> result = codigodebarras.translateBarCode();
@@ -188,15 +191,18 @@ void menuTransformations()
                 bufferImage.fullDilate();
                 bufferImage -= limiarizada;
                                 
-                bufferImage.findConexComponents();
+                const int maxComponents = 5;
+                bufferImage.findConexComponents(maxComponents);
                 
-                cout << bufferImage.conexComponents[4]->tellTimeOfClock(&limiarizada) << endl;
+                vector<ConexComponent*>::iterator it;
+                for(it = bufferImage.conexComponents.begin(); it!=bufferImage.conexComponents.end(); it++) {
+                    cout<< (*it)->isClock(&limiarizada) <<endl;
+                    if( (*it)->isClock(&limiarizada) )
+                        cout << (*it)->tellTimeOfClock(&limiarizada) << endl;
+                }
+                    
 
                 bufferImage = limiarizada;
-                
-//                vector<ConexComponent*>::iterator it;
-//                for(it = bufferImage.conexComponents.begin(); it!=bufferImage.conexComponents.end(); it++)
-//                    (*it)->tellTimeOfClock(bufferImage);
             }
             
             WAIT;
