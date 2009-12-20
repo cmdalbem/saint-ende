@@ -464,6 +464,7 @@ float Imagem::bestLimiar()
         m1 += image(i,0)->Red;
         m1 += image(i,h-1)->Red;
     }
+    m1 /= quantos;
     //end média
 
     int m2 = 0;
