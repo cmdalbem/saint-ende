@@ -13,6 +13,8 @@
 
 #include "ConexComponent.h"
 
+#include "texture.h"
+
 using namespace std;
 
 
@@ -75,6 +77,7 @@ void menuTransformations()
     cout<<"16. Crazy Limiar" << endl;
     cout<<"17. Find Edge" << endl;
     cout<<"18. Negative" << endl;
+    cout<<"19. Let Apus show his hot naked body" << endl;
     cout<<"default: Cancel"<<endl;
     cout<<endl;
 
@@ -157,7 +160,7 @@ void menuTransformations()
             {
                 bufferImage.convertToGrayScale();
                 bufferImage.limiarize(200);
-                
+
                 BarCode codigodebarras(bufferImage); //inicializa BarCode apenas com a imagem, então o construtor encontrará o código de barras pra nós
 
                 vector<int> result = codigodebarras.translateBarCode();
@@ -190,21 +193,21 @@ void menuTransformations()
                 Imagem limiarizada = bufferImage;
                 bufferImage.fullDilate();
                 bufferImage -= limiarizada;
-                                
+
                 const int maxComponents = 5;
                 bufferImage.findConexComponents(maxComponents);
-                
+
                 vector<ConexComponent*>::iterator it;
                 for(it = bufferImage.conexComponents.begin(); it!=bufferImage.conexComponents.end(); it++) {
                     cout<< (*it)->isClock(&limiarizada) <<endl;
                     if( (*it)->isClock(&limiarizada) )
                         cout << (*it)->tellTimeOfClock(&limiarizada) << endl;
                 }
-                    
+
 
                 bufferImage = limiarizada;
             }
-            
+
             WAIT;
             break;
 
@@ -231,6 +234,35 @@ void menuTransformations()
                 WAIT;
                 break;
             }
+        case 19:
+            {
+                Imagem temp = bufferImage;
+                bufferImage.convertToGrayScale();
+                bufferImage.limiarize(200);
+                bufferImage.binaryInversion();
+                Imagem limiarizada = bufferImage;
+                bufferImage.fullDilate();
+                bufferImage -= limiarizada;
+
+                const int maxComponents = 5;
+                bufferImage.findConexComponents(maxComponents);
+                int biggerComponent = 0;
+
+                for(int i = 0; i < bufferImage.conexComponents.size(); ++i)
+                    if( bufferImage.conexComponents[i]->getX2() - bufferImage.conexComponents[i]->getX1() >=
+                            bufferImage.conexComponents[biggerComponent]->getX2() - bufferImage.conexComponents[biggerComponent]->getX1()
+                        &&
+                        bufferImage.conexComponents[i]->getY2() - bufferImage.conexComponents[i]->getY1() >=
+                            bufferImage.conexComponents[biggerComponent]->getY2() - bufferImage.conexComponents[biggerComponent]->getY1()
+                      )
+                            biggerComponent = i;
+
+                cout << endl << "CELULA: " << findTexture(temp, bufferImage.conexComponents[biggerComponent]->getX1(), bufferImage.conexComponents[biggerComponent]->getY1()) << endl;
+
+                bufferImage = temp;
+            }
+            WAIT;
+            break;
     }
 }
 

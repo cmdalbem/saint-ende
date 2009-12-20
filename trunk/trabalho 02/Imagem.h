@@ -34,9 +34,9 @@ class Imagem
     public:
         Imagem(){};
         ~Imagem(){};
-        
+
         vector<ConexComponent*> conexComponents;
-        
+
 
         // GETTERS e setters ... dã
         int getR(int x, int y);
@@ -80,7 +80,7 @@ class Imagem
 
         void convertToGrayScale();
 
-        void limiarize(double treshold);
+        void limiarize(double threshold);
 
         float bestLimiar();
 
@@ -102,7 +102,7 @@ class Imagem
 
         unsigned char* getArray();
 
-       
+
         // ImagemConvolution.cpp
 
         void laplaciano();
@@ -119,7 +119,7 @@ class Imagem
 
 		Imagem operator-=(Imagem aImage);
 
-		Imagem operator=(Imagem aImage);
+		Imagem& operator=(Imagem aImage);
 
 };
 
