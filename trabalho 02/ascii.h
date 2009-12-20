@@ -2,18 +2,23 @@
 #define _ASCII_H_
 
 #include "Imagem.h"
+#include <vector>
 #include <fstream>
 #include <climits>
 
 #define MAX_PATERNS 36
 
-Class Ascii {
+class Ascii {
 	
 	private:
 			
-		char patternsTable[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+		static char patternsTable[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 		
 		Imagem image;
+		Vector<int> candidates;
+		Vector<int> buffaloBill;
+		Vector<int> trust;
+		
 		char letter, number;
 		
 		void recognizeAsciies();
@@ -21,7 +26,7 @@ Class Ascii {
 	public:
 		
 		Ascii(){};
-		Ascii(Imagem inputImage);
+		Ascii(Imagem inputImage, Vector<int> inputCandidates);
 		
 		~Ascii(){};
 		

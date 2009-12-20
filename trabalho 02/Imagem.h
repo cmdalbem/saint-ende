@@ -35,7 +35,7 @@ class Imagem
         Imagem(){};
         ~Imagem(){};
 
-        // GETTERS
+        // GETTERS e setters ... dã
         int getR(int x, int y);
         int getB(int x, int y);
         int getG(int x, int y);
@@ -46,6 +46,7 @@ class Imagem
         void setG(int x, int y, int value);
         void setGreenPix(int x, int y);
         void setRedPix(int x, int y);
+		
 
         int getH();
         int getW();
@@ -59,7 +60,7 @@ class Imagem
         void setInternalFrameY1(int y1);
         void setInternalFrameY2(int y2);
 
-
+		Vector<ConexComponent*> getConexComponents();
         // FUNÇÕES BÁSICAS
 
         char* getImagePath();
