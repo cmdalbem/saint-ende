@@ -158,8 +158,8 @@ void Imagem::setInternalFrameY2(int y2) {
     internalFrameY2 = y2;
 }
 
-Vector<ConexComponent*> getConexComponents() {
-	
+vector<ConexComponent*> getConexComponents() {
+
 	return conexComponents;
 }
 

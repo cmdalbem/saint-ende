@@ -61,7 +61,7 @@ class Imagem
         void setInternalFrameY1(int y1);
         void setInternalFrameY2(int y2);
 
-		Vector<ConexComponent*> getConexComponents();
+		vector<ConexComponent*> getConexComponents();
         // FUNÇÕES BÁSICAS
 
         char* getImagePath();
