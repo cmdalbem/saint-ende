@@ -103,12 +103,12 @@ double ConexComponent::getCompacity()
 
 bool ConexComponent::isClock(Imagem *image)
 {
-    int BORDERSIZE = 6;
+    int BORDERSIZE = floor((x2-x1)/20);
     int MAX_WRONG_PIXELS = 5;
     
     
-    int midx = (x1+x2)/2;
-    int midy = (y1+y2)/2;
+    int midx = (x1+x2)/2 + 1;
+    int midy = (y1+y2)/2 + 1;
     int radius = x2 - midx;
         
     // teste se o centro da imagem é branco (origem das setas do relógio)
@@ -117,24 +117,26 @@ bool ConexComponent::isClock(Imagem *image)
         
 
     // teste de círculo pefeito
-    int totalPixels=0;
-    int whitePixels=0; 
-    for(double i=0; i<2*PI; i+=0.01) { //iteração circular
-
-        totalPixels++;
-        
-        double itx = midx - (radius-BORDERSIZE/2)*sin(i);
-        double ity = midy - (radius-BORDERSIZE/2)*cos(i);            
-
-        if(image->isWhitePix(itx,ity))
-            whitePixels++;
+    for(int sizeIterator=-1; sizeIterator<=1; sizeIterator++) {
+        int totalPixels=0;
+        int whitePixels=0; 
+        for(double i=0; i<2*PI; i+=0.01) { //iteração circular
+    
+            totalPixels++;
+            
+            double itx = midx - (radius+sizeIterator-BORDERSIZE/2)*sin(i);
+            double ity = midy - (radius+sizeIterator-BORDERSIZE/2)*cos(i);            
+    
+            if(image->isWhitePix(itx,ity))
+                whitePixels++;
+                
+            //image->setRedPix(itx,ity);
+        }
+        if( totalPixels-whitePixels < MAX_WRONG_PIXELS )
+            return true;
     }
-    if( totalPixels-whitePixels > MAX_WRONG_PIXELS )
-        return false;
-    
-    
-    
-    return true;
+
+    return false;
 }    
 
 const char* ConexComponent::tellTimeOfClock(Imagem *originalImage)
