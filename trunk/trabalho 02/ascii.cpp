@@ -1,10 +1,12 @@
-#include "ascii.h"
+/*#include "ascii.h"
+
+using namespace std;
 
 Ascii::Ascii(Imagem inputImage, vector<int> inputCandidates) {
 	
 	image = inputImage;
 	candidates = inputCandidates;
-	recognizeAsciees();
+	recognizeAsciies();
 }
 
 char Ascii::getLetter() {
@@ -19,8 +21,8 @@ char Ascii::getNumber() {
 
 void Ascii::recognizeAsciies(){
 	
-	ofstream patternFile("asciiPaterns.pat");
-	int highest = MAX_INT, highestIndex;
+	ifstream patternFile("asciiPaterns.pat");
+	int highest = INT_MAX, highestIndex;
 	
 	for(int c = 0; c < candidates.size(); c++) {
 		
@@ -64,3 +66,4 @@ void Ascii::recognizeAsciies(){
 	else
 		number = buffinho, letter = buffinho2;
 }
+*/
