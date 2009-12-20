@@ -190,7 +190,7 @@ void menuTransformations()
                                 
                 bufferImage.findConexComponents();
                 
-                bufferImage.conexComponents[4]->tellTimeOfClock(&limiarizada);
+                cout << bufferImage.conexComponents[4]->tellTimeOfClock(&limiarizada) << endl;
 
                 bufferImage = limiarizada;
                 

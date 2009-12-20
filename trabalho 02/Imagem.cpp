@@ -150,7 +150,6 @@ void Imagem::setInternalFrameY2(int y2) {
     internalFrameY2 = y2;
 }
 
-vector<ConexComponent*> getConexComponents() {
 
 bool Imagem::isWhitePix(int x, int y) {
 
@@ -162,7 +161,7 @@ bool Imagem::isBlackPix(int x, int y) {
 }
 
 
-int Imagem::load(char path[]) {
+int Imagem::load(const char path[]) {
 
     if( image.ReadFromFile(path) ) {
 

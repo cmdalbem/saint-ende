@@ -99,9 +99,11 @@ double ConexComponent::getCompacity()
 }
 
 
-int ConexComponent::tellTimeOfClock(Imagem *image)
-//retorna -1 se não conseguir ler as horas
+const char* ConexComponent::tellTimeOfClock(Imagem *originalImage)
+//retorna NULL se não conseguir ler as horas
 {
+    Imagem image = *originalImage; //não mexemos na imagem original
+    
     double PI = 3.141592653589793238462643383279502884197169399375;
     
     int midx = (x1+x2)/2;
@@ -109,45 +111,72 @@ int ConexComponent::tellTimeOfClock(Imagem *image)
     int pointerSize = ((x2 - midx)*3)/4;
     int hour, minute;
 
-    // MINUTE
+
+    if( !image.isWhitePix(midx, midy) )
+        return NULL;
+
+
+    //-----------------MINUTE------------------//
     int pointerWidth =0;
     double pointerAngle =0;
     for(double i=0; i<2*PI; i+=0.01) { //iteração circular
         
-        double itx = pointerSize*sin(i) + midx;
-        double ity = pointerSize*cos(i) + midy;
+        double itx = midx - pointerSize*sin(i);
+        double ity = midy - pointerSize*cos(i);
 
-        if( image->isWhitePix(itx, ity) ) {
+        if( image.isWhitePix(itx, ity)
+            && //analisa se não é um pixel isolado (ruído)
+               ( image.isWhitePix(midx-pointerSize*sin(i-0.01), midy-pointerSize*cos(i-0.01))  ||
+                 image.isWhitePix(midx-pointerSize*sin(i+0.01), midy-pointerSize*cos(i+0.01))
+               )
+          )
+        {
             pointerWidth++;
             pointerAngle += i;
         }
     }
-    pointerAngle = pointerAngle/pointerWidth;
-    image->setRedPix( pointerSize*sin(pointerAngle) + midx , pointerSize*cos(pointerAngle) + midy);
-    minute = (60*pointerAngle) / (2*PI);
+    pointerAngle = pointerAngle/pointerWidth; //faz média do angulo do ponteiro
     
-    // HOUR
+    //iremos desenhar um poligono no lugar do ponteiro dos minutos para que na próxima iteração encontremos apenas o das horas
+    for(int size=0; size<pointerSize; size++)
+        for(int x=-pointerWidth/2; x<pointerWidth/2; x++)
+            for(int y=-pointerWidth/2; y<pointerWidth/2; y++)
+                image.setRedPix( midx+x - size*sin(pointerAngle) , midy+y - size*cos(pointerAngle));
+    
+    minute = 60 - (60*pointerAngle) / (2*PI); //regra de três
+    
+    
+    
+    
+    //------------------HOUR-----------------//
     pointerWidth =0;
     pointerAngle =0;
     pointerSize = pointerSize/2;
     for(double i=0; i<2*PI; i+=0.01) {
 
-        double itx = pointerSize*sin(i) + midx;
-        double ity = pointerSize*cos(i) + midy;
+        double itx = midx - pointerSize*sin(i);
+        double ity = midy - pointerSize*cos(i);
 
-        if( image->isWhitePix(itx, ity) ) {
+        if( image.isWhitePix(itx, ity)
+            && //analisa se não é um pixel isolado (ruído)
+               ( image.isWhitePix(midx-pointerSize*sin(i-0.01), midy-pointerSize*cos(i-0.01))  ||
+                 image.isWhitePix(midx-pointerSize*sin(i+0.01), midy-pointerSize*cos(i+0.01))
+               )
+          )
+        {
             pointerWidth++;
             pointerAngle +=i;
         }
     }
     pointerAngle = pointerAngle/pointerWidth;
-    image->setRedPix( pointerSize*sin(pointerAngle) + midx , pointerSize*cos(pointerAngle) + midy);
-    hour = (12*pointerAngle) / (2*PI);
+    //image.setRedPix( midx - pointerSize*sin(pointerAngle) , midy - pointerSize*cos(pointerAngle));
+    hour = 12 - (12*pointerAngle) / (2*PI); //regra de três
     
     
-    cout<< hour << "h " << minute << "min." << endl;
 
+    char time[6];
+    sprintf(time,"%2.i:%2.i",hour,minute);
         
-    return 1;
+    return time;
 }
     
