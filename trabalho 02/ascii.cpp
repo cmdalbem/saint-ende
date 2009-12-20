@@ -1,6 +1,6 @@
 #include "ascii.h"
 
-Ascii::Ascii(Imagem inputImage, Vector<int> inputCandidates) {
+Ascii::Ascii(Imagem inputImage, vector<int> inputCandidates) {
 	
 	image = inputImage;
 	candidates = inputCandidates;
@@ -51,7 +51,7 @@ void Ascii::recognizeAsciies(){
 		trust.push_back(highest / ((x2-x1) * (y2-y1)));
 	}
 	
-	Vector<int>::iterator mt = max_element(trust.begin(), trust.end());
+	vector<int>::iterator mt = max_element(trust.begin(), trust.end());
 	char buffinho = patternsTable[buffaloBill[mt]];
 	
 	trust[mt] = 0;

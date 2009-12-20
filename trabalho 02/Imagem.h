@@ -11,7 +11,8 @@
 
 using std::vector;
 
-class ConexComponent;
+class ConexComponent;
+
 class Imagem
 {
     private:
@@ -46,7 +47,7 @@ class Imagem
         void setG(int x, int y, int value);
         void setGreenPix(int x, int y);
         void setRedPix(int x, int y);
-		
+
 
         int getH();
         int getW();
