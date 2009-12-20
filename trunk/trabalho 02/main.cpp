@@ -70,6 +70,7 @@ void menuTransformations()
     cout<<"13. Find Internal Box Delimiters"<<endl;
     cout<<"14. Find Conex Components"<<endl;
     cout<<"15. Spatial Mapping" << endl;
+    cout<<"16. Crazy Limiar" << endl;
     cout<<"default: Cancel"<<endl;
     cout<<endl;
 
@@ -143,7 +144,7 @@ void menuTransformations()
                 Imagem limiarizada = bufferImage;
 
                 bufferImage.fullDilate();
-                bufferImage -= limiarizada;
+                bufferImage.binaryInversion();
             }
             WAIT;
             break;
@@ -179,11 +180,20 @@ void menuTransformations()
             break;
 
         case 15:
-            Point o[4] = { {124,460}, {590,430}, {521,34}, {123,117} };
-            Point p[4] = { {0,0}, {0,480},{640,480}, {640,0} };
-            bufferImage.spatialMapping(o,p);
-            WAIT;
-            break;
+            {
+                Point o[4] = { {124,460}, {590,430}, {521,34}, {123,117} };
+                Point p[4] = { {0,0}, {0,480},{640,480}, {640,0} };
+                bufferImage.spatialMapping(o,p);
+                WAIT;
+                break;
+            }
+        case 16:
+            {
+                float lim = bufferImage.bestLimiar();
+                bufferImage.limiarize(lim);
+                WAIT;
+                break;
+            }
     }
 }
 

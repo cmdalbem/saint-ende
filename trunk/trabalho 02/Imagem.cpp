@@ -1,11 +1,8 @@
 #include<stdlib.h>
 #include<iostream>
-//#include<conio2.h>
 
 #include "Imagem.h"
 #include "ConexComponent.h"
-
-#include <vector>
 
 using namespace std;
 
@@ -232,11 +229,23 @@ void Imagem::binaryInversion()
     }
 }
 
+void Imagem::negative()
+{
+    for (int i=0; i < getW(); ++i)
+    {
+        for (int j=0; j < getH(); ++j)
+        {
+            image(i,j)->Red = 255 - image(i,j)->Red;
+            image(i,j)->Green = 255 - image(i,j)->Green;
+            image(i,j)->Blue = 255 - image(i,j)->Blue;
+        }
+    }
+}
 
 void Imagem::fullDilate()
 {
     int matrix[3][3] = { { 1, 1, 1 } ,
-                         { 1, 0, 1 },
+                         { 1, 1, 1 },
                          { 1, 1, 1 }
 
     };
@@ -432,6 +441,79 @@ void Imagem::copy(BMP im)
     }
 }
 
+float Imagem::bestLimiar()
+{
+    float m1 = 0;
+
+    int quantos = 0;
+
+    //média dos elementos nos cantos
+    for (int i=0; i < h; ++i, quantos += 2)
+    {
+        m1 += image(0,i)->Red;
+        m1 += image(w-1,i)->Red;
+    }
+
+    for (int i=1; i < w-1; ++i, quantos += 2)
+    {
+        m1 += image(i,0)->Red;
+        m1 += image(i,h-1)->Red;
+    }
+    //end média
+
+    float m2 = 0;
+    quantos = 0;
+
+    //média dos elementos restantes
+    for (int i=1; i < w-1; ++i)
+        for (int j=1; j < h-1; ++j, ++quantos)
+            m2 += image(i,j)->Red;
+
+    m2 = m2/quantos;
+    //end média
+
+    float lanterior = 0;
+    float latual = (m1 + m2)/2;
+
+    while ( fabs(lanterior - latual) >= EPSOLON)
+    {
+        m1 = 0; m2 = 0;
+        int quantos = 0;
+
+        for (int i=0; i < w; ++i)
+            for (int j=0; j < h; ++j)
+            {
+                if (image(i,j)->Red < latual)
+                {
+                    ++quantos;
+                    m1 += image(i,j)->Red;
+                }
+            }
+
+        m1 /= quantos;
+
+        quantos = 0;
+
+        for (int i=0; i < w; ++i)
+            for (int j=0; j < h; ++j)
+            {
+                if (image(i,j)->Red >= latual)
+                {
+                    ++quantos;
+                    m2 += image(i,j)->Red;
+                }
+            }
+
+        m2 /= quantos;
+
+        lanterior = latual;
+        latual = (m1+m2)/2;
+
+        cout << lanterior << " " << latual;
+    }
+
+    return latual;
+}
 
 unsigned char * Imagem::getArray()
 {
@@ -443,3 +525,4 @@ unsigned char * Imagem::getArray()
 
     return arrayOfPixels;
 }
+
