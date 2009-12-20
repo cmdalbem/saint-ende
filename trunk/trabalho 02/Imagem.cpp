@@ -186,14 +186,14 @@ int Imagem::save(char path[]) {
 }
 
 
-void Imagem::limiarize(double treshold)
+void Imagem::limiarize(double threshold)
 {
 
     for(  int  j=0  ;  j  <  h  ;  j++) {
 
         for(  int  i=0  ;  i  <  w  ;  i++) {
 
-            if( image(i,j)->Red > treshold ) {
+            if( image(i,j)->Red > threshold ) {
                 image(i,j)->Red = 255;
                 image(i,j)->Green = 255;
                 image(i,j)->Blue = 255;
@@ -518,10 +518,13 @@ float Imagem::bestLimiar()
 unsigned char * Imagem::getArray()
 {
     unsigned char * arrayOfPixels = new unsigned char[w * h];
+    Imagem copy = *this;
+    copy.convertToGrayScale();
+    copy.limiarize(copy.bestLimiar());
 
     for(int j = 0; j < h; ++j)
         for(int i = 0; i < w; ++i)
-            arrayOfPixels[(j * w) + i] = image(i,j);
+            arrayOfPixels[(j * w) + i] = copy.getR(i,j);
 
     return arrayOfPixels;
 }
