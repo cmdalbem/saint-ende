@@ -68,9 +68,9 @@ class Imagem
 
         char* getImagePath();
 
-        int load(char path[]);
+        int load(const char path[]);
 
-        int save(char path[]);
+        int save(const char path[]);
 
         void convertToGrayScale();
 
