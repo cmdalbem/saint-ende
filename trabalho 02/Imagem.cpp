@@ -163,7 +163,7 @@ vector<ConexComponent*> getConexComponents() {
 	return conexComponents;
 }
 
-int Imagem::load(char path[]) {
+int Imagem::load(const char path[]) {
 
     if( image.ReadFromFile(path) ) {
 
@@ -183,7 +183,7 @@ int Imagem::load(char path[]) {
 	else return 0;
 }
 
-int Imagem::save(char path[]) {
+int Imagem::save(const char path[]) {
 
     return image.WriteToFile( path );
 }
