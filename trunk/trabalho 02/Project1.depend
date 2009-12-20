@@ -1,0 +1,81 @@
+# depslib dependency file v1.0
+1261252412 source:c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\conexcomponent.cpp
+	"ConexComponent.h"
+	<iostream>
+
+1261252412 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\conexcomponent.h
+	"bib/EasyBMP.h"
+	"Imagem.h"
+
+1261252341 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\bib\easybmp.h
+	<iostream>
+	<cmath>
+	<cctype>
+	<cstring>
+	<stdio.h>
+	<cstdio>
+	"EasyBMP_DataStructures.h"
+	"EasyBMP_BMP.h"
+	"EasyBMP_VariousBMPutilities.h"
+
+1261252341 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\bib\easybmp_datastructures.h
+
+1261252341 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\bib\easybmp_bmp.h
+
+1261252341 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\bib\easybmp_variousbmputilities.h
+
+1261252412 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\imagem.h
+	"bib/EasyBMP.h"
+	"definitions.h"
+
+1261252412 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\definitions.h
+
+1261252412 source:c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\imagem.cpp
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+	"ConexComponent.h"
+	<vector>
+
+1261252412 source:c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\imagemconvolution.cpp
+	"ImagemConvolution.h"
+
+1261252412 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\imagemconvolution.h
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+
+1261252412 source:c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\imagemoperators.cpp
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+
+1261252412 source:c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\asciiespatterncreator.cpp
+	"imagem.h"
+	<iostream>
+	<fstream>
+
+1261252341 source:c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\bib\easybmp.cpp
+	"EasyBMP.h"
+
+1261252412 source:c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<limits>
+	<algorithm>
+	"Imagem.h"
+	"BarCode.h"
+	"definitions.h"
+
+1261252412 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\barcode.h
+	"bib/EasyBMP.h"
+	"definitions.h"
+	"Imagem.h"
+	<vector>
+
+1261252412 source:c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\barcode.cpp
+	<stdlib.h>
+	<iostream>
+	"BarCode.h"
+
