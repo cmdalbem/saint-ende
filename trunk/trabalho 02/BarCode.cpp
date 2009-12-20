@@ -71,7 +71,7 @@ void BarCode::findCodeBar()
         x2--;
     x2 = x2+1;
       
-    y1 = y2 = image.getH() * 0.875; //podemos usar mesmos y1 e y2 para o caso de ler apenas uma linha de pixels do código
+    y1 = y2 = image.getH() * 0.875; //podemos usar os mesmos y1 e y2 para o caso de ler apenas uma linha de pixels do código
 }
 
 

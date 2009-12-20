@@ -333,7 +333,7 @@ void Imagem::findInternalBox()
 
 }
 
-void Imagem::findConexComponents()
+void Imagem::findConexComponents(int maxComponents)
 //Aplicar essa função depois de já ter feito detecção de bordas
 {
     int x, y;
@@ -344,9 +344,9 @@ void Imagem::findConexComponents()
 
     Imagem drawingBuffer = *this;
 
-    while( y < internalFrameY2 /*&& components.size()!=1*/) {
+    while( y < internalFrameY2 && conexComponents.size()!=maxComponents) {
 
-        while( x < internalFrameX2-1 /*&& components.size()!=1*/) {
+        while( x < internalFrameX2-1 && conexComponents.size()!=maxComponents) {
 
             if( drawingBuffer.isWhitePix(x,y) )
                 this->conexComponents.push_back(new ConexComponent(x,y,&drawingBuffer)); //dá um ponto qualquer do contorno do componente e

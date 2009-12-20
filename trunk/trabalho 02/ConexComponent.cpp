@@ -4,6 +4,9 @@
 
 using namespace std;
 
+double PI = 3.141592653589793238462643383279502884197169399375;
+
+
 
 ConexComponent::ConexComponent(int x, int y, Imagem *image)
 {
@@ -98,22 +101,52 @@ double ConexComponent::getCompacity()
     return (perimeter*perimeter) / area;
 }
 
+bool ConexComponent::isClock(Imagem *image)
+{
+    int BORDERSIZE = 6;
+    int MAX_WRONG_PIXELS = 5;
+    
+    
+    int midx = (x1+x2)/2;
+    int midy = (y1+y2)/2;
+    int radius = x2 - midx;
+        
+    // teste se o centro da imagem é branco (origem das setas do relógio)
+    if( !image->isWhitePix(midx, midy) )
+        return false;
+        
+
+    // teste de círculo pefeito
+    int totalPixels=0;
+    int whitePixels=0; 
+    for(double i=0; i<2*PI; i+=0.01) { //iteração circular
+
+        totalPixels++;
+        
+        double itx = midx - (radius-BORDERSIZE/2)*sin(i);
+        double ity = midy - (radius-BORDERSIZE/2)*cos(i);            
+
+        if(image->isWhitePix(itx,ity))
+            whitePixels++;
+    }
+    if( totalPixels-whitePixels > MAX_WRONG_PIXELS )
+        return false;
+    
+    
+    
+    return true;
+}    
 
 const char* ConexComponent::tellTimeOfClock(Imagem *originalImage)
 //retorna NULL se não conseguir ler as horas
 {
     Imagem image = *originalImage; //não mexemos na imagem original
     
-    double PI = 3.141592653589793238462643383279502884197169399375;
-    
     int midx = (x1+x2)/2;
     int midy = (y1+y2)/2;
-    int pointerSize = ((x2 - midx)*3)/4;
+    int radius = x2 - midx;
+    int pointerSize = (radius*3)/4;
     int hour, minute;
-
-
-    if( !image.isWhitePix(midx, midy) )
-        return NULL;
 
 
     //-----------------MINUTE------------------//
