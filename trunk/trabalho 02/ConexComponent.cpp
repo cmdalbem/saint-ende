@@ -51,6 +51,7 @@ void ConexComponent::findBoundingBox(int x, int y, Imagem *image)
             }
 }
 
+
 void ConexComponent::drawBoundingBox(Imagem *image)
 {
     for(int i=x1; i<=x2; i++) //linha horizontal superior

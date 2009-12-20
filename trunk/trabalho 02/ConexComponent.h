@@ -15,13 +15,18 @@ class ConexComponent
         int xo, yo; //um ponto qualquer pertencente à linha de borda do componente
         int x1, x2, y1, y2; //coordenadas da bounding box
 
-
         bool isMarkedPix(int x, int y, Imagem *image);
 
     public:
         ConexComponent(int x, int y, Imagem *image);
         ~ConexComponent();
 
+		// pegadores
+		
+		int getX1() {return x1;}
+		int getX2() {return x2;}
+		int getY1() {return y1;}
+		int getY2() {return y2;}
 
         // FUNÇÕES
 
