@@ -4,6 +4,7 @@
 
 
 #include "bib/EasyBMP.h" // por favor usar essa barra --> / para separar diretorios
+#include "kht/kht.h"
 #include "definitions.h"
 #include "linearAlgebra.h"
 #include <vector>
@@ -59,7 +60,7 @@ class Imagem
         void setInternalFrameY2(int y2);
 
 
-        // FUNÇÕES BÁSCIAS
+        // FUNÇÕES BÁSICAS
 
         char* getImagePath();
 
