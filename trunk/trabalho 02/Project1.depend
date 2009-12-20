@@ -79,3 +79,52 @@
 	<iostream>
 	"BarCode.h"
 
+1261282001 source:c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\conexcomponent.cpp
+	"ConexComponent.h"
+	<iostream>
+
+1261283063 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\conexcomponent.h
+	"bib/EasyBMP.h"
+	"Imagem.h"
+
+1260729599 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\bib\easybmp.h
+	<iostream>
+	<cmath>
+	<cctype>
+	<cstring>
+	<stdio.h>
+	<cstdio>
+	"EasyBMP_DataStructures.h"
+	"EasyBMP_BMP.h"
+	"EasyBMP_VariousBMPutilities.h"
+
+1260729599 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\bib\easybmp_datastructures.h
+
+1260729599 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\bib\easybmp_bmp.h
+
+1260729599 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\bib\easybmp_variousbmputilities.h
+
+1261284255 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\imagem.h
+	"bib/EasyBMP.h"
+	"kht/kht.h"
+	"definitions.h"
+	"linearAlgebra.h"
+	<vector>
+
+1261274532 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\kht\kht.h
+	"types.h"
+
+1261274532 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\kht\types.h
+	<cmath>
+	<cstdlib>
+	<memory.h>
+	"buffer_2d.h"
+
+1261274532 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\kht\buffer_2d.h
+	<cstdlib>
+
+1261281193 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\definitions.h
+
+1261257487 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\linearalgebra.h
+	"definitions.h"
+
