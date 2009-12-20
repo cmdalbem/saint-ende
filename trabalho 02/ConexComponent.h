@@ -39,6 +39,11 @@ class ConexComponent
         void findArea(int x, int y, Imagem *image);
 
         double getCompacity();
+        
+        
+        // Funções Específicas de Componentes
+        
+        int tellTimeOfClock(Imagem *image);
 
 
 };

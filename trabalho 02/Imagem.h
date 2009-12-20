@@ -28,19 +28,20 @@ class Imagem
 		void zeraBufalo(int* bufalo);
         void printMask(float *mask,int tam);
         void convolucao_nxn(float *mask, int n); //ImagemConvolution.cpp
+        void copy(BMP im);
 
-        vector<ConexComponent*> conexComponents;
 
     public:
         Imagem(){};
         ~Imagem(){};
+        
+        vector<ConexComponent*> conexComponents;
+        
 
         // GETTERS e setters ... dã
         int getR(int x, int y);
         int getB(int x, int y);
         int getG(int x, int y);
-        bool isWhitePix(int x, int y);
-        bool isBlackPix(int x, int y);
         bool isGreenPix(int x, int y);
         bool pixelIsEdge(int x, int y, int threshold);
 
@@ -64,6 +65,11 @@ class Imagem
         void setInternalFrameY2(int y2);
 
 		vector<ConexComponent*> getConexComponents();
+        // FUNÇÕES BÁSICAS
+
+        bool isWhitePix(int x, int y);
+        bool isBlackPix(int x, int y);
+
         // FUNÇÕES BÁSICAS
 
         char* getImagePath();
@@ -96,6 +102,7 @@ class Imagem
 
         unsigned char* getArray();
 
+       
         // ImagemConvolution.cpp
 
         void laplaciano();
