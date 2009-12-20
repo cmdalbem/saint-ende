@@ -43,7 +43,7 @@ class ConexComponent
         
         // Funções Específicas de Componentes
         
-        int tellTimeOfClock(Imagem *image);
+        const char* tellTimeOfClock(Imagem *image);
 
 
 };

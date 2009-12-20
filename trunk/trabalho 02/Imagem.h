@@ -98,7 +98,7 @@ class Imagem
 
         void findEdge();
 
-        void copy(BMP im);
+        //void copy(BMP im);
 
         unsigned char* getArray();
 
