@@ -83,6 +83,28 @@ void Imagem::customMask(int n)
 //
 // PS.: OHN QUE PENA, isso não funciona sem a conio :(
 //
+//      Segue versão para fracassados que não usam conio:
+//
+    float mask[n][n];
+
+    for(int x=0; x<n; x++)
+        for(int y=0; y<n; y++)
+            mask[x][y] = 0;
+
+    cout<<"-> Matriz de Convolucao"<<endl<<endl;
+
+    //Entrada NÃO formatada de matriz
+
+    for(int y=0; y<n; y++){
+
+        for(int x=0; x<n; x++)
+
+            cin >> mask[x][y];
+    }
+
+    //Chamada da operação
+    convolucao_nxn((float*)mask,n);
+
 }
 
 

@@ -207,7 +207,7 @@ const char* ConexComponent::tellTimeOfClock(Imagem *originalImage)
     
     
 
-    char time[6];
+    static char time[6];
     sprintf(time,"%2.i:%2.i",hour,minute);
         
     return time;
