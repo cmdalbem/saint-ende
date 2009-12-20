@@ -432,3 +432,14 @@ void Imagem::copy(BMP im)
     }
 }
 
+
+unsigned char * Imagem::getArray()
+{
+    unsigned char * arrayOfPixels = new unsigned char[w * h];
+
+    for(int j = 0; j < h; ++j)
+        for(int i = 0; i < w; ++i)
+            arrayOfPixels[(j * w) + i] = image(i,j);
+
+    return arrayOfPixels;
+}
