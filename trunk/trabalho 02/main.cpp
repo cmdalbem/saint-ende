@@ -71,6 +71,8 @@ void menuTransformations()
     cout<<"14. Find Conex Components"<<endl;
     cout<<"15. Spatial Mapping" << endl;
     cout<<"16. Crazy Limiar" << endl;
+    cout<<"17. Find Edge" << endl;
+    cout<<"18. Negative" << endl;
     cout<<"default: Cancel"<<endl;
     cout<<endl;
 
@@ -194,6 +196,14 @@ void menuTransformations()
                 WAIT;
                 break;
             }
+        case 17:
+                bufferImage.findEdge();
+                break;
+
+
+        case 18:
+                bufferImage.negative();
+                break;
     }
 }
 

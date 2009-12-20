@@ -1,8 +1,6 @@
 #ifndef _IMAGEM_H_
 #define _IMAGEM_H_
 
-
-
 #include "bib/EasyBMP.h" // por favor usar essa barra --> / para separar diretorios
 #include "kht/kht.h"
 #include "definitions.h"
@@ -25,6 +23,7 @@ class Imagem
 		int internalFrameX1, internalFrameX2, internalFrameY1, internalFrameY2; //working frame (quadro que será considerado)
 
 
+        Point findFirstPixel(int threshold);
 		int truncaValor(int valor);
 		void zeraBufalo(int* bufalo);
         void printMask(float *mask,int tam);
@@ -42,6 +41,9 @@ class Imagem
         int getG(int x, int y);
         bool isWhitePix(int x, int y);
         bool isBlackPix(int x, int y);
+        bool isGreenPix(int x, int y);
+        bool pixelIsEdge(int x, int y, int threshold);
+
         void setR(int x, int y, int value);
         void setB(int x, int y, int value);
         void setG(int x, int y, int value);
@@ -87,6 +89,8 @@ class Imagem
         void findConexComponents();
 
         void spatialMapping(Point oldPos[4], Point newPos[4]);
+
+        void findEdge();
 
         void copy(BMP im);
 

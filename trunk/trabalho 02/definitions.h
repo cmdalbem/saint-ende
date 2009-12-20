@@ -8,7 +8,7 @@
 #else
 #define PAUSE ;
 #define getch getchar // é triste, nao tenho getch()
-#define CLEAR_STRING "lear"
+#define CLEAR_STRING "clear"
 #endif
 
 
@@ -61,6 +61,8 @@ enum{
 
 typedef struct _point {
     int x,y;
+
+    inline bool operator==(struct _point p) { return x == p.x && y == p.y; }
 }Point;
 
 #endif
