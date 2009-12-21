@@ -11,7 +11,7 @@ double PI = 3.141592653589793238462643383279502884197169399375;
 ConexComponent::ConexComponent(int x, int y, Imagem *image)
 {
 	known = 0;
-	
+
     this->x1 = image->getW();
     this->x2 = 0;
     this->y1 = image->getH();
@@ -107,31 +107,31 @@ bool ConexComponent::isClock(Imagem *image)
 {
     int BORDERSIZE = floor((x2-x1)/20);
     int MAX_WRONG_PIXELS = 5;
-    
-    
+
+
     int midx = (x1+x2)/2 + 1;
     int midy = (y1+y2)/2 + 1;
     int radius = x2 - midx;
-        
+
     // teste se o centro da imagem é branco (origem das setas do relógio)
     if( !image->isWhitePix(midx, midy) )
         return false;
-        
+
 
     // teste de círculo pefeito
     for(int sizeIterator=-1; sizeIterator<=1; sizeIterator++) {
         int totalPixels=0;
-        int whitePixels=0; 
+        int whitePixels=0;
         for(double i=0; i<2*PI; i+=0.01) { //iteração circular
-    
+
             totalPixels++;
-            
+
             double itx = midx - (radius+sizeIterator-BORDERSIZE/2)*sin(i);
-            double ity = midy - (radius+sizeIterator-BORDERSIZE/2)*cos(i);            
+            double ity = midy - (radius+sizeIterator-BORDERSIZE/2)*cos(i);
 
             if(image->isWhitePix(itx,ity))
                 whitePixels++;
-                
+
             //image->setRedPix(itx,ity);
         }
         if( totalPixels-whitePixels < MAX_WRONG_PIXELS ) {
@@ -141,13 +141,13 @@ bool ConexComponent::isClock(Imagem *image)
     }
 
     return false;
-}    
+}
 
 const char* ConexComponent::tellTimeOfClock(Imagem *originalImage)
 //retorna NULL se não conseguir ler as horas
 {
     Imagem image = *originalImage; //não mexemos na imagem original
-    
+
     int midx = (x1+x2)/2;
     int midy = (y1+y2)/2;
     int radius = x2 - midx;
@@ -159,7 +159,7 @@ const char* ConexComponent::tellTimeOfClock(Imagem *originalImage)
     int pointerWidth =0;
     double pointerAngle =0;
     for(double i=0; i<2*PI; i+=0.01) { //iteração circular
-        
+
         double itx = midx - pointerSize*sin(i);
         double ity = midy - pointerSize*cos(i);
 
@@ -175,18 +175,18 @@ const char* ConexComponent::tellTimeOfClock(Imagem *originalImage)
         }
     }
     pointerAngle = pointerAngle/pointerWidth; //faz média do angulo do ponteiro
-    
+
     //iremos desenhar um poligono no lugar do ponteiro dos minutos para que na próxima iteração encontremos apenas o das horas
     for(int size=0; size<pointerSize; size++)
         for(int x=-pointerWidth/2; x<pointerWidth/2; x++)
             for(int y=-pointerWidth/2; y<pointerWidth/2; y++)
                 image.setRedPix( midx+x - size*sin(pointerAngle) , midy+y - size*cos(pointerAngle));
-    
+
     minute = 60 - (60*pointerAngle) / (2*PI); //regra de três
-    
-    
-    
-    
+
+
+
+
     //------------------HOUR-----------------//
     pointerWidth =0;
     pointerAngle =0;
@@ -210,12 +210,12 @@ const char* ConexComponent::tellTimeOfClock(Imagem *originalImage)
     pointerAngle = pointerAngle/pointerWidth;
     //image.setRedPix( midx - pointerSize*sin(pointerAngle) , midy - pointerSize*cos(pointerAngle));
     hour = 12 - (12*pointerAngle) / (2*PI); //regra de três
-    
-    
+
+
 
     static char time[6];
     sprintf(time,"%2.i:%2.i",hour,minute);
-        
+
     return time;
 }
-    
+

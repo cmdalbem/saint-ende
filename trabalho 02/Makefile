@@ -1,18 +1,21 @@
 # Project: FPI
 # Makefile created by modifying the one created by Dev-C++ 4.9.9.2 :)
 
-CPP  = colorgcc
-CC   = colorgcc
+CPP  = gcc
+CC   = gcc
 
 OBJ  = Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o \
         linearAlgebra.o texture.o
 
 KHT_FILES = buffer_2d.o eigen.o kht.o linking.o peak_detection.o subdivision.o voting.o
 
-KHT = $(KHT_FILES:%=kht/%)
+#KHT = $(KHT_FILES:%=kht/%)
 
 FLAGS = -Wall -lstdc++ -g
 all: $(OBJ) fpi
+
+ascii.o: ascii.cpp ascii.h
+        $(CPP) -c $< -o $@ $(FLAGS)
 
 fpi: main.cpp $(OBJ)
 	$(CPP) $< -o $@ $(OBJ) $(KHT) $(FLAGS)
