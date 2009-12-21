@@ -535,37 +535,38 @@ unsigned char * Imagem::getArray()
     return arrayOfPixels;
 }
 
-void Imagem::findEdge()
-{
-    Point neigh[8] = { {-1,-1},{0,-1},{1,-1},{-1,0},{1,0},{-1,1},{0,1},{1,1} };
-    int threshold = 10;
+//NAO WORKA
+//void Imagem::findEdge()
+//{
+//    Point neigh[8] = { {-1,-1},{0,-1},{1,-1},{-1,0},{1,0},{-1,1},{0,1},{1,1} };
+//    int threshold = 10;
 
-    Point first = findFirstPixel(threshold);
-    Point invalid = {-1,-1};
-    Point cur, next;
-    cur = next = first;
+//    Point first = findFirstPixel(threshold);
+//    Point invalid = {-1,-1};
+//    Point cur, next;
+//    cur = next = first;
 
-    do {
-        bool foundWay = false;
+//    do {
+//        bool foundWay = false;
 
-        for (int i = 0; i < 8 && !foundWay ; ++i) {
+//        for (int i = 0; i < 8 && !foundWay ; ++i) {
 
-            Point test = { cur.x + neigh[i].x, cur.y + neigh[i].y};
+//            Point test = { cur.x + neigh[i].x, cur.y + neigh[i].y};
 
-            if ( pixelIsEdge (test.x,test.y,threshold)  && !isGreenPix(test.x,test.y) )
-            {
-                foundWay = true;
-                next.x = cur.x + neigh[i].x; next.y = cur.y + neigh[i].y;
-                setGreenPix(next.x,next.y);
-            }
+//            if ( pixelIsEdge (test.x,test.y,threshold)  && !isGreenPix(test.x,test.y) )
+//            {
+//                foundWay = true;
+//                next.x = cur.x + neigh[i].x; next.y = cur.y + neigh[i].y;
+//                setGreenPix(next.x,next.y);
+//            }
 
-            if (!foundWay)
-                next = invalid;
-        }
+//            if (!foundWay)
+//                next = invalid;
+//        }
 
-    } while ( !(next == first) && !(next == invalid) );
+//    } while ( !(next == first) && !(next == invalid) );
 
-}
+//}
 
 bool Imagem::isGreenPix(int i, int j)
 {

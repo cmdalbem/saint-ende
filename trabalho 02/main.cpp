@@ -220,7 +220,7 @@ void menuTransformations()
                 break;
             }
         case 17:
-                bufferImage.findEdge();
+                //bufferImage.findEdge();
                 break;
 
 

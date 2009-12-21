@@ -59,18 +59,10 @@ double compare(Imagem& first, Imagem& second, int originX, int originY, int widt
 void loadTextureCell(Imagem& textureCell, int index)
 {
     char indexString[5] = "0";
-    if(index < 9999) itoa(index, indexString, 10);
+    if(index < 9999) sprintf(indexString,"%d",index);//itoa(index, indexString, 10);
     string texturePath = string("patterns/cell_") + indexString + string(".bmp") ;
 
     textureCell.load(texturePath.c_str());
 
 }
 
-void loadTexture(Imagem& textureCell, int index)
-{
-    char indexString[5] = "0";
-    if(index < 9999) itoa(index, indexString, 10);
-    string texturePath = string("patterns/pattern_") + string(indexString) + string(".bmp") ;
-
-    textureCell.load(texturePath.c_str());
-}

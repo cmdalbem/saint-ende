@@ -5,7 +5,7 @@ CPP  = colorgcc
 CC   = colorgcc
 
 OBJ  = Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o \
-        linearAlgebra.o
+        linearAlgebra.o texture.o
 
 FLAGS = -Wall -lstdc++
 all: $(OBJ) fpi
@@ -32,6 +32,9 @@ ConexComponent.o: ConexComponent.cpp ConexComponent.h
 	$(CPP) -c ConexComponent.cpp -o $@ $(FLAGS)
 
 linearAlgebra.o: linearAlgebra.cpp linearAlgebra.h
+	$(CPP) -c $< -o $@ $(FLAGS)
+
+texture.o: texture.cpp texture.h
 	$(CPP) -c $< -o $@ $(FLAGS)
 
 clean:
