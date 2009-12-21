@@ -98,10 +98,8 @@ class Imagem
 
         void findEdge();
 
-        //void copy(BMP im);
-
         unsigned char* getArray();
-
+        void readFromArray(unsigned char* array, int imWidth, int imHeight);
 
         // ImagemConvolution.cpp
 
@@ -121,6 +119,9 @@ class Imagem
 
 		Imagem& operator=(Imagem aImage);
 
+        //Hough
+
+        void houghTransform();
 };
 
 

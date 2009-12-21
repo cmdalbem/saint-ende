@@ -7,11 +7,15 @@ CC   = colorgcc
 OBJ  = Imagem.o bib/EasyBMP.o ImagemConvolution.o ImagemOperators.o BarCode.o ConexComponent.o \
         linearAlgebra.o texture.o
 
-FLAGS = -Wall -lstdc++
+KHT_FILES = buffer_2d.o eigen.o kht.o linking.o peak_detection.o subdivision.o voting.o
+
+KHT = $(KHT_FILES:%=kht/%)
+
+FLAGS = -Wall -lstdc++ -g
 all: $(OBJ) fpi
 
 fpi: main.cpp $(OBJ)
-	$(CPP) $< -o $@ $(OBJ) $(FLAGS)
+	$(CPP) $< -o $@ $(OBJ) $(KHT) $(FLAGS)
 
 Imagem.o: Imagem.cpp Imagem.h
 	$(CPP) -c Imagem.cpp -o $@ $(FLAGS)

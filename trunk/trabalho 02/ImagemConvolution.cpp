@@ -1,4 +1,5 @@
 #include "ImagemConvolution.h"
+#include "kht/kht.h"
 
 void Imagem::convolucao_nxn(float *mask, int n)
 {
