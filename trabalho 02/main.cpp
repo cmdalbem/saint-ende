@@ -78,6 +78,7 @@ void menuTransformations()
     cout<<"17. Find Edge" << endl;
     cout<<"18. Negative" << endl;
     cout<<"19. Let Apus show his hot naked body" << endl;
+    cout<<"20. KHT" << endl;
     cout<<"default: Cancel"<<endl;
     cout<<endl;
 
@@ -223,17 +224,18 @@ void menuTransformations()
                 //bufferImage.findEdge();
                 break;
 
+        case 16:
+        {
+            float lim = bufferImage.bestLimiar();
+            bufferImage.limiarize(lim);
+            WAIT;
+            break;
+        }
 
         case 18:
                 bufferImage.negative();
                 break;
-        case 16:
-            {
-                float lim = bufferImage.bestLimiar();
-                bufferImage.limiarize(lim);
-                WAIT;
-                break;
-            }
+
         case 19:
             {
                 Imagem temp = bufferImage;
@@ -263,7 +265,16 @@ void menuTransformations()
             }
             WAIT;
             break;
+
+        case 20:
+        {
+            bufferImage.houghTransform();
+            WAIT;
+            break;
+        }
     }
+
+
 }
 
 void mainMenu()

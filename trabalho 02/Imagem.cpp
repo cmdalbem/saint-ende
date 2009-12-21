@@ -535,7 +535,27 @@ unsigned char * Imagem::getArray()
     return arrayOfPixels;
 }
 
-//NAO WORKA
+/*
+    Should be used only with grayscale images
+*/
+void Imagem::readFromArray(unsigned char* array, int imWidth, int imHeight)
+{
+    if (imWidth > w || imHeight > h)
+    {
+        DEBUG;
+        cout << "The dimensions passed dont't match. Who can save us?" << endl;
+    }
+
+    for(int j = 0; j < imHeight; ++j)
+        for(int i = 0; i < imWidth; ++i)
+        {
+            image(i,j)->Red = array[(j * imWidth) + i];
+            image(i,j)->Blue = image(i,j)->Red;
+            image(i,j)->Green = image(i,j)->Red;
+        }
+}
+
+//Doesn't work
 //void Imagem::findEdge()
 //{
 //    Point neigh[8] = { {-1,-1},{0,-1},{1,-1},{-1,0},{1,0},{-1,1},{0,1},{1,1} };
@@ -596,5 +616,16 @@ Point Imagem::findFirstPixel(int threshold)
 
     Point invalid = { -1,-1};
     return invalid;
+}
+
+void Imagem::houghTransform()
+{
+    lines_list_t list;
+
+    unsigned char *binaryImage = getArray();
+    kht(list,binaryImage,getW(),getH());
+
+    readFromArray(binaryImage,getW(),getH());
+
 }
 
