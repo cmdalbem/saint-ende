@@ -10,6 +10,7 @@
 #include "Imagem.h"
 #include "BarCode.h"
 #include "definitions.h"
+#include "ascii.h"
 
 #include "ConexComponent.h"
 
@@ -79,6 +80,7 @@ void menuTransformations()
     cout<<"18. Negative" << endl;
     cout<<"19. Let Apus show his hot naked body" << endl;
     cout<<"20. KHT" << endl;
+    cout<<"21. Find Letter & Number" << endl;
     cout<<"default: Cancel"<<endl;
     cout<<endl;
 
@@ -262,9 +264,9 @@ void menuTransformations()
                 cout << endl << "CELULA: " << findTexture(temp, bufferImage.conexComponents[biggerComponent]->getX1(), bufferImage.conexComponents[biggerComponent]->getY1()) << endl;
 
                 bufferImage = temp;
+                WAIT;
+            	break;
             }
-            WAIT;
-            break;
 
         case 20:
         {
@@ -272,9 +274,19 @@ void menuTransformations()
             WAIT;
             break;
         }
+        case 21:
+	    {
+		 	bufferImage.negative();
+            vector<int> candidates = bufferImage.unknownComponents();
+
+            Ascii asciiFinder(&bufferImage, candidates);
+            
+            cout << "Letter = " << asciiFinder.getLetter() << endl;
+            cout << "Number = " << asciiFinder.getNumber() << endl;
+            WAIT;
+            break;
+	  	}
     }
-
-
 }
 
 void mainMenu()

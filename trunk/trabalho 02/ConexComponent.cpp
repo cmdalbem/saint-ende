@@ -10,6 +10,8 @@ double PI = 3.141592653589793238462643383279502884197169399375;
 
 ConexComponent::ConexComponent(int x, int y, Imagem *image)
 {
+	known = 0;
+	
     this->x1 = image->getW();
     this->x2 = 0;
     this->y1 = image->getH();
@@ -126,14 +128,16 @@ bool ConexComponent::isClock(Imagem *image)
             
             double itx = midx - (radius+sizeIterator-BORDERSIZE/2)*sin(i);
             double ity = midy - (radius+sizeIterator-BORDERSIZE/2)*cos(i);            
-    
+
             if(image->isWhitePix(itx,ity))
                 whitePixels++;
                 
             //image->setRedPix(itx,ity);
         }
-        if( totalPixels-whitePixels < MAX_WRONG_PIXELS )
-            return true;
+        if( totalPixels-whitePixels < MAX_WRONG_PIXELS ) {
+            known = 1;
+			return true;
+        }
     }
 
     return false;
