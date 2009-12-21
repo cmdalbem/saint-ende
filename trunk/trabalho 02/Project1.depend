@@ -128,3 +128,169 @@
 1261257487 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\linearalgebra.h
 	"definitions.h"
 
+1261338442 source:c:\users\user\desktop\fpi\trabalho 02\barcode.cpp
+	<stdlib.h>
+	<iostream>
+	"BarCode.h"
+
+1261335088 c:\users\user\desktop\fpi\trabalho 02\barcode.h
+	"bib/EasyBMP.h"
+	"definitions.h"
+	"Imagem.h"
+	<vector>
+
+1261335048 c:\users\user\desktop\fpi\trabalho 02\bib\easybmp.h
+	<iostream>
+	<cmath>
+	<cctype>
+	<cstring>
+	<stdio.h>
+	<cstdio>
+	"EasyBMP_DataStructures.h"
+	"EasyBMP_BMP.h"
+	"EasyBMP_VariousBMPutilities.h"
+
+1261335048 c:\users\user\desktop\fpi\trabalho 02\bib\easybmp_datastructures.h
+
+1261335048 c:\users\user\desktop\fpi\trabalho 02\bib\easybmp_bmp.h
+
+1261335048 c:\users\user\desktop\fpi\trabalho 02\bib\easybmp_variousbmputilities.h
+
+1261374077 c:\users\user\desktop\fpi\trabalho 02\definitions.h
+
+1261374077 c:\users\user\desktop\fpi\trabalho 02\imagem.h
+	"bib/EasyBMP.h"
+	"kht/kht.h"
+	"definitions.h"
+	"linearAlgebra.h"
+	<vector>
+
+1261335044 c:\users\user\desktop\fpi\trabalho 02\kht\kht.h
+	"types.h"
+
+1261335044 c:\users\user\desktop\fpi\trabalho 02\kht\types.h
+	<cmath>
+	<cstdlib>
+	<memory.h>
+	"buffer_2d.h"
+
+1261335044 c:\users\user\desktop\fpi\trabalho 02\kht\buffer_2d.h
+	<cstdlib>
+
+1261335088 c:\users\user\desktop\fpi\trabalho 02\linearalgebra.h
+	"definitions.h"
+
+1261374456 source:c:\users\user\desktop\fpi\trabalho 02\conexcomponent.cpp
+	"ConexComponent.h"
+	<iostream>
+	<cmath>
+
+1261367929 c:\users\user\desktop\fpi\trabalho 02\conexcomponent.h
+	"bib/EasyBMP.h"
+	"Imagem.h"
+
+1261374076 source:c:\users\user\desktop\fpi\trabalho 02\imagem.cpp
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+	"ConexComponent.h"
+
+1261374076 source:c:\users\user\desktop\fpi\trabalho 02\imagemconvolution.cpp
+	"ImagemConvolution.h"
+	"kht/kht.h"
+
+1261335088 c:\users\user\desktop\fpi\trabalho 02\imagemconvolution.h
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+
+1261374076 source:c:\users\user\desktop\fpi\trabalho 02\imagemoperators.cpp
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+
+1261335048 source:c:\users\user\desktop\fpi\trabalho 02\bib\easybmp.cpp
+	"EasyBMP.h"
+
+1261335044 source:c:\users\user\desktop\fpi\trabalho 02\kht\buffer_2d.cpp
+	<cstdlib>
+	<memory.h>
+	"buffer_2d.h"
+
+1261335044 source:c:\users\user\desktop\fpi\trabalho 02\kht\eigen.cpp
+	"eigen.h"
+
+1261335044 c:\users\user\desktop\fpi\trabalho 02\kht\eigen.h
+	"types.h"
+
+1261335044 source:c:\users\user\desktop\fpi\trabalho 02\kht\kht.cpp
+	"kht.h"
+	"linking.h"
+	"subdivision.h"
+	"voting.h"
+	"peak_detection.h"
+
+1261335044 c:\users\user\desktop\fpi\trabalho 02\kht\linking.h
+	"types.h"
+
+1261335044 c:\users\user\desktop\fpi\trabalho 02\kht\subdivision.h
+	"types.h"
+
+1261335044 c:\users\user\desktop\fpi\trabalho 02\kht\voting.h
+	"types.h"
+
+1261335044 c:\users\user\desktop\fpi\trabalho 02\kht\peak_detection.h
+	"types.h"
+
+1261335044 source:c:\users\user\desktop\fpi\trabalho 02\kht\linking.cpp
+	"linking.h"
+
+1261335044 source:c:\users\user\desktop\fpi\trabalho 02\kht\peak_detection.cpp
+	"buffer_2d.h"
+	"peak_detection.h"
+
+1261335044 source:c:\users\user\desktop\fpi\trabalho 02\kht\subdivision.cpp
+	<algorithm>
+	"subdivision.h"
+
+1261335044 source:c:\users\user\desktop\fpi\trabalho 02\kht\voting.cpp
+	<limits>
+	"voting.h"
+	"eigen.h"
+
+1261335088 source:c:\users\user\desktop\fpi\trabalho 02\linearalgebra.cpp
+	"linearAlgebra.h"
+	<iostream>
+	<cstdlib>
+	<cmath>
+
+1261374390 source:c:\users\user\desktop\fpi\trabalho 02\main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<limits>
+	<algorithm>
+	"Imagem.h"
+	"BarCode.h"
+	"definitions.h"
+	"ascii.h"
+	"ConexComponent.h"
+	"texture.h"
+
+1261368873 c:\users\user\desktop\fpi\trabalho 02\ascii.h
+	"Imagem.h"
+	"ConexComponent.h"
+	<vector>
+	<fstream>
+	<climits>
+
+1261374077 c:\users\user\desktop\fpi\trabalho 02\texture.h
+	<string>
+	"Imagem.h"
+
+1261374077 source:c:\users\user\desktop\fpi\trabalho 02\texture.cpp
+	"texture.h"
+
+1261373058 source:c:\users\user\desktop\fpi\trabalho 02\ascii.cpp
+	"ascii.h"
+
