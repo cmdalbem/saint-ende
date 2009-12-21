@@ -152,7 +152,7 @@ void Imagem::setInternalFrameY2(int y2) {
 
 
 ConexComponent* Imagem::getConexComponent(int index) {
-	
+
 	return conexComponents[index];
 }
 
@@ -199,6 +199,27 @@ void Imagem::limiarize(double threshold)
     for(  int  j=0  ;  j  <  h  ;  j++) {
 
         for(  int  i=0  ;  i  <  w  ;  i++) {
+
+            if( image(i,j)->Red > threshold ) {
+                image(i,j)->Red = 255;
+                image(i,j)->Green = 255;
+                image(i,j)->Blue = 255;
+            }
+            else {
+                image(i,j)->Red = 0;
+                image(i,j)->Green = 0;
+                image(i,j)->Blue = 0;
+            }
+        }
+
+    }
+}
+
+void Imagem::limiarizeRegion(int x1, int x2, int y1, int y2, double threshold)
+{
+    for(  int  j=y1  ;  j  <  y2 ;  j++) {
+
+        for(  int  i=x1  ;  i  <  x2 ;  i++) {
 
             if( image(i,j)->Red > threshold ) {
                 image(i,j)->Red = 255;
@@ -375,15 +396,15 @@ void Imagem::findConexComponents(int maxComponents)
 }
 
 vector<int> Imagem::unknownComponents() {
-	
+
 	vector<int> unknown;
-	
+
 	for(int i = 0; i < conexComponents.size(); i++) {
-		
+
 		if(!conexComponents[i]->isKnown())
 			unknown.push_back(i);
 	}
-	
+
 	return unknown;
 }
 
@@ -485,7 +506,7 @@ float Imagem::bestLimiar()
         m1 += image(i,h-1)->Red;
     }
     m1 /= quantos;
-    
+
     m1/=quantos;
     //end média
 
@@ -510,6 +531,73 @@ float Imagem::bestLimiar()
 
         for (int i=0; i < w; ++i)
             for (int j=0; j < h; ++j)
+            {
+                if (image(i,j)->Red < latual)
+                {
+                    ++quantos1;
+                    m1 += image(i,j)->Red;
+                }
+                else
+                {
+				 	++quantos2;
+				 	m2 += image(i,j)->Red;
+				}
+            }
+
+        m1 /= quantos1;
+        m2 /= quantos2;
+
+        lanterior = latual;
+        latual = (m1+m2)/2;
+
+        cout << lanterior << " " << latual;
+    }
+
+    return latual;
+}
+
+float Imagem::bestLimiarByRegion(int x1, int x2, int y1, int y2)
+{
+    int m1 = 0;
+
+    int quantos = 0;
+
+    //média dos elementos nos cantos
+    for (int i=y1; i < y2; ++i, quantos += 2)
+    {
+        m1 += image(x1,i)->Red;
+        m1 += image(x2,i)->Red;
+    }
+
+    for (int i=x1+1; i < x2; ++i, quantos += 2)
+    {
+        m1 += image(i,y1)->Red;
+        m1 += image(i,y2)->Red;
+    }
+    m1 /= quantos;
+    //end média
+
+    int m2 = 0;
+    quantos = 0;
+
+    //média dos elementos restantes
+    for (int i=x1+1; i < x2; ++i)
+        for (int j=y1+1; j < y2; ++j, ++quantos)
+            m2 += image(i,j)->Red;
+
+    m2 = m2/quantos;
+    //end média
+
+    int lanterior = 0;
+    int latual = (m1 + m2)/2;
+
+    while ( lanterior != latual)
+    {
+        m1 = 0; m2 = 0;
+        int quantos1 = 0, quantos2 = 0;
+
+        for (int i=x1; i <= x2; ++i)
+            for (int j=y1; j <= y2; ++j)
             {
                 if (image(i,j)->Red < latual)
                 {

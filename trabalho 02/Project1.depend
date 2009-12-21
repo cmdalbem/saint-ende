@@ -158,7 +158,7 @@
 
 1261374077 c:\users\user\desktop\fpi\trabalho 02\definitions.h
 
-1261374077 c:\users\user\desktop\fpi\trabalho 02\imagem.h
+1261378436 c:\users\user\desktop\fpi\trabalho 02\imagem.h
 	"bib/EasyBMP.h"
 	"kht/kht.h"
 	"definitions.h"
@@ -189,7 +189,7 @@
 	"bib/EasyBMP.h"
 	"Imagem.h"
 
-1261374076 source:c:\users\user\desktop\fpi\trabalho 02\imagem.cpp
+1261378835 source:c:\users\user\desktop\fpi\trabalho 02\imagem.cpp
 	<stdlib.h>
 	<iostream>
 	"Imagem.h"
@@ -264,7 +264,7 @@
 	<cstdlib>
 	<cmath>
 
-1261374390 source:c:\users\user\desktop\fpi\trabalho 02\main.cpp
+1261379111 source:c:\users\user\desktop\fpi\trabalho 02\main.cpp
 	<iostream>
 	<string>
 	<cstdlib>
