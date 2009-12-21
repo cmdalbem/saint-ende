@@ -20,6 +20,8 @@
 		<Unit filename="Imagem.h" />
 		<Unit filename="ImagemConvolution.cpp" />
 		<Unit filename="ImagemOperators.cpp" />
+		<Unit filename="ascii.cpp" />
+		<Unit filename="ascii.h" />
 		<Unit filename="bib\EasyBMP.cpp" />
 		<Unit filename="definitions.h" />
 		<Unit filename="kht\buffer_2d.cpp" />

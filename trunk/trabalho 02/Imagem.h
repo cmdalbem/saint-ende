@@ -82,7 +82,11 @@ class Imagem
 
         void limiarize(double threshold);
 
+        void limiarizeRegion(int x1, int x2, int y1, int y2, double threshold);
+
         float bestLimiar();
+
+        float bestLimiarByRegion(int x1, int x2, int y1, int y2);
 
         void fullDilate();
 
@@ -93,7 +97,7 @@ class Imagem
         void findInternalBox();
 
         void findConexComponents(int maxComponents);
-        
+
         vector<int> unknownComponents();
 
         void spatialMapping(Point oldPos[4], Point newPos[4]);

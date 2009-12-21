@@ -228,8 +228,76 @@ void menuTransformations()
 
         case 16:
         {
-            float lim = bufferImage.bestLimiar();
-            bufferImage.limiarize(lim);
+            //float lim = bufferImage.bestLimiar();
+            //bufferImage.limiarize(lim);
+
+            int x1,x2,y1,y2;
+            float lim;
+
+            x1=0;x2=bufferImage.getW()/4;y1=0;y2=bufferImage.getH()/4;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=bufferImage.getW()/2;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=3*bufferImage.getW()/4;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=bufferImage.getW()-1;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=0;x2=bufferImage.getW()/4;y1=y2+1;y2=bufferImage.getH()/2;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=bufferImage.getW()/2;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=3*bufferImage.getW()/4;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=bufferImage.getW()-1;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=0;x2=bufferImage.getW()/4;y1=y2+1;y2=3*bufferImage.getH()/4;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=bufferImage.getW()/2;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=3*bufferImage.getW()/4;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=bufferImage.getW()-1;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=0;x2=bufferImage.getW()/4;y1=y2+1;y2=bufferImage.getH()-1;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=bufferImage.getW()/2;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=3*bufferImage.getW()/4;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
+            x1=x2+1;x2=bufferImage.getW()-1;
+            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+
             WAIT;
             break;
         }
@@ -280,7 +348,7 @@ void menuTransformations()
             vector<int> candidates = bufferImage.unknownComponents();
 
             Ascii asciiFinder(&bufferImage, candidates);
-            
+
             cout << "Letter = " << asciiFinder.getLetter() << endl;
             cout << "Number = " << asciiFinder.getNumber() << endl;
             WAIT;
