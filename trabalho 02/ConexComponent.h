@@ -16,6 +16,7 @@ class ConexComponent
         int x1, x2, y1, y2; //coordenadas da bounding box
 
         bool isMarkedPix(int x, int y, Imagem *image);
+		bool known;
 
     public:
         ConexComponent(int x, int y, Imagem *image);
@@ -43,6 +44,8 @@ class ConexComponent
         
         // Funções Específicas de Componentes
         
+		bool isKnown() {return known;}
+		
         bool isClock(Imagem *image);
         const char* tellTimeOfClock(Imagem *image);
 

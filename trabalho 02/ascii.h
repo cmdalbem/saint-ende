@@ -2,11 +2,12 @@
 #define _ASCII_H_
 
 #include "Imagem.h"
+#include "ConexComponent.h"
 #include <vector>
 #include <fstream>
 #include <climits>
 
-#define MAX_PATERNS 36
+#define MAX_PATTERNS 36
 
 static const char patternsTable[36] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 
@@ -14,10 +15,10 @@ class Ascii {
 	
 	private:
 		
-		Imagem image;
+		Imagem* image;
 		vector<int> candidates;
-		vector<int> buffaloBill;
-		vector<int> trust;
+		vector<char> buffaloBill;
+		vector<float> trust;
 		
 		char letter, number;
 		
@@ -26,7 +27,7 @@ class Ascii {
 	public:
 		
 		Ascii(){};
-		Ascii(Imagem inputImage, vector<int> inputCandidates);
+		Ascii(Imagem* inputImage, vector<int> inputCandidates);
 		
 		~Ascii(){};
 		

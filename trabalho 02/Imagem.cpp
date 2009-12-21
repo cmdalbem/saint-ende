@@ -151,6 +151,12 @@ void Imagem::setInternalFrameY2(int y2) {
 }
 
 
+ConexComponent* Imagem::getConexComponent(int index) {
+	
+	return conexComponents[index];
+}
+
+
 bool Imagem::isWhitePix(int x, int y) {
 
     return (image(x,y)->Green == 255) && (image(x,y)->Red == 255) && (image(x,y)->Blue == 255);
@@ -336,6 +342,7 @@ void Imagem::findInternalBox()
 void Imagem::findConexComponents(int maxComponents)
 //Aplicar essa função depois de já ter feito detecção de bordas
 {
+    conexComponents.clear();
     int x, y;
     x = internalFrameX1+1;
     y = internalFrameY1+1;
@@ -365,6 +372,19 @@ void Imagem::findConexComponents(int maxComponents)
 //        it->drawBoundingBox(this);
 
     //*this = drawingBuffer;
+}
+
+vector<int> Imagem::unknownComponents() {
+	
+	vector<int> unknown;
+	
+	for(int i = 0; i < conexComponents.size(); i++) {
+		
+		if(!conexComponents[i]->isKnown())
+			unknown.push_back(i);
+	}
+	
+	return unknown;
 }
 
 void Imagem::spatialMapping(Point oldPos[4], Point newPos[4])
@@ -465,6 +485,8 @@ float Imagem::bestLimiar()
         m1 += image(i,h-1)->Red;
     }
     m1 /= quantos;
+    
+    m1/=quantos;
     //end média
 
     int m2 = 0;
@@ -484,33 +506,25 @@ float Imagem::bestLimiar()
     while ( lanterior != latual)
     {
         m1 = 0; m2 = 0;
-        int quantos = 0;
+        int quantos1 = 0, quantos2 = 0;
 
         for (int i=0; i < w; ++i)
             for (int j=0; j < h; ++j)
             {
                 if (image(i,j)->Red < latual)
                 {
-                    ++quantos;
+                    ++quantos1;
                     m1 += image(i,j)->Red;
                 }
-            }
-
-        m1 /= quantos;
-
-        quantos = 0;
-
-        for (int i=0; i < w; ++i)
-            for (int j=0; j < h; ++j)
-            {
-                if (image(i,j)->Red >= latual)
+                else
                 {
-                    ++quantos;
-                    m2 += image(i,j)->Red;
-                }
+				 	++quantos2;
+				 	m2 += image(i,j)->Red;
+				}
             }
 
-        m2 /= quantos;
+        m1 /= quantos1;
+        m2 /= quantos2;
 
         lanterior = latual;
         latual = (m1+m2)/2;
