@@ -64,7 +64,7 @@ class Imagem
         void setInternalFrameY1(int y1);
         void setInternalFrameY2(int y2);
 
-		vector<ConexComponent*> getConexComponents();
+		ConexComponent* getConexComponent(int index);
         // FUNÇÕES BÁSICAS
 
         bool isWhitePix(int x, int y);
@@ -93,6 +93,8 @@ class Imagem
         void findInternalBox();
 
         void findConexComponents(int maxComponents);
+        
+        vector<int> unknownComponents();
 
         void spatialMapping(Point oldPos[4], Point newPos[4]);
 
