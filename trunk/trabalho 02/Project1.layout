@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="default" />
-	<File name="Imagem.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="13392" topLine="213" />
+	<File name="ConexComponent.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="3414" topLine="92" />
+	</File>
+	<File name="ConexComponent.h" open="1" top="0" tabpos="6">
+		<Cursor position="775" topLine="0" />
+	</File>
+	<File name="Imagem.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="11092" topLine="503" />
 	</File>
 	<File name="Imagem.h" open="1" top="0" tabpos="1">
-		<Cursor position="2221" topLine="72" />
+		<Cursor position="2199" topLine="72" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="9213" topLine="275" />
+	<File name="ImagemConvolution.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="1012" topLine="94" />
+	</File>
+	<File name="ImagemOperators.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="622" topLine="0" />
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="9724" topLine="291" />
+	</File>
+	<File name="texture.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="1173" topLine="26" />
 	</File>
 </CodeBlocks_layout_file>

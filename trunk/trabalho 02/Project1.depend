@@ -3,6 +3,8 @@
 	"ConexComponent.h"
 	<iostream>
 
+1261331490 
+
 1261252412 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\conexcomponent.h
 	"bib/EasyBMP.h"
 	"Imagem.h"
@@ -18,6 +20,8 @@
 	"EasyBMP_BMP.h"
 	"EasyBMP_VariousBMPutilities.h"
 
+1261331450 ariousBMPutilities.h"
+
 1261252341 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\bib\easybmp_datastructures.h
 
 1261252341 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\bib\easybmp_bmp.h
@@ -27,6 +31,8 @@
 1261252412 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\imagem.h
 	"bib/EasyBMP.h"
 	"definitions.h"
+
+1261331490 ns.h"
 
 1261252412 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\definitions.h
 
@@ -39,6 +45,8 @@
 
 1261252412 source:c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\imagemconvolution.cpp
 	"ImagemConvolution.h"
+
+1261252412 volution.h"
 
 1261252412 c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\imagemconvolution.h
 	<stdlib.h>
@@ -57,6 +65,8 @@
 
 1261252341 source:c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\bib\easybmp.cpp
 	"EasyBMP.h"
+
+1261410552 "
 
 1261252412 source:c:\users\apus\documents\cic ufrgs\4º sem\fundamentos de processamento de imagens\trab2\saint-ende\trabalho 02\main.cpp
 	<iostream>
@@ -119,6 +129,8 @@
 	<cstdlib>
 	<memory.h>
 	"buffer_2d.h"
+
+1261331446 .h"
 
 1261274532 c:\fábio\cic\4º semestre\fpi\saint ende\saint-ende\trabalho 02\kht\buffer_2d.h
 	<cstdlib>
@@ -195,6 +207,8 @@
 	"Imagem.h"
 	"ConexComponent.h"
 
+1261392460 onent.h"
+
 1261374076 source:c:\users\user\desktop\fpi\trabalho 02\imagemconvolution.cpp
 	"ImagemConvolution.h"
 	"kht/kht.h"
@@ -230,6 +244,8 @@
 	"voting.h"
 	"peak_detection.h"
 
+1261331446 ction.h"
+
 1261335044 c:\users\user\desktop\fpi\trabalho 02\kht\linking.h
 	"types.h"
 
@@ -252,6 +268,8 @@
 1261335044 source:c:\users\user\desktop\fpi\trabalho 02\kht\subdivision.cpp
 	<algorithm>
 	"subdivision.h"
+
+1261331446 on.h"
 
 1261335044 source:c:\users\user\desktop\fpi\trabalho 02\kht\voting.cpp
 	<limits>
@@ -293,4 +311,502 @@
 
 1261373058 source:c:\users\user\desktop\fpi\trabalho 02\ascii.cpp
 	"ascii.h"
+
+1261334844 source:/media/SOIER/FPI/FPI/trabalho 02/BarCode.cpp
+	<stdlib.h>
+	<iostream>
+	"BarCode.h"
+
+1261331490 /media/SOIER/FPI/FPI/trabalho 02/BarCode.h
+	"bib/EasyBMP.h"
+	"definitions.h"
+	"Imagem.h"
+	<vector>
+
+1261331450 /media/SOIER/FPI/FPI/trabalho 02/bib/EasyBMP.h
+	<iostream>
+	<cmath>
+	<cctype>
+	<cstring>
+	<stdio.h>
+	<cstdio>
+	"EasyBMP_DataStructures.h"
+	"EasyBMP_BMP.h"
+	"EasyBMP_VariousBMPutilities.h"
+
+1261331450 /media/SOIER/FPI/FPI/trabalho 02/bib/EasyBMP_DataStructures.h
+
+1261331450 /media/SOIER/FPI/FPI/trabalho 02/bib/EasyBMP_BMP.h
+
+1261331450 /media/SOIER/FPI/FPI/trabalho 02/bib/EasyBMP_VariousBMPutilities.h
+
+1261394465 /media/SOIER/FPI/FPI/trabalho 02/definitions.h
+
+1261374838 /media/SOIER/FPI/FPI/trabalho 02/Imagem.h
+	"bib/EasyBMP.h"
+	"kht/kht.h"
+	"definitions.h"
+	"linearAlgebra.h"
+	<vector>
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/kht.h
+	"types.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/types.h
+	<cmath>
+	<cstdlib>
+	<memory.h>
+	"buffer_2d.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/buffer_2d.h
+	<cstdlib>
+
+1261331490 /media/SOIER/FPI/FPI/trabalho 02/linearAlgebra.h
+	"definitions.h"
+
+1261370856 source:/media/SOIER/FPI/FPI/trabalho 02/ConexComponent.cpp
+	"ConexComponent.h"
+	<iostream>
+	<cmath>
+
+1261364330 /media/SOIER/FPI/FPI/trabalho 02/ConexComponent.h
+	"bib/EasyBMP.h"
+	"Imagem.h"
+
+1261392460 source:/media/SOIER/FPI/FPI/trabalho 02/Imagem.cpp
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+	"ConexComponent.h"
+
+1261370478 source:/media/SOIER/FPI/FPI/trabalho 02/ImagemConvolution.cpp
+	"ImagemConvolution.h"
+	"kht/kht.h"
+
+1261331490 /media/SOIER/FPI/FPI/trabalho 02/ImagemConvolution.h
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+
+1261370478 source:/media/SOIER/FPI/FPI/trabalho 02/ImagemOperators.cpp
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+
+1261369458 source:/media/SOIER/FPI/FPI/trabalho 02/ascii.cpp
+	"ascii.h"
+
+1261365274 /media/SOIER/FPI/FPI/trabalho 02/ascii.h
+	"Imagem.h"
+	"ConexComponent.h"
+	<vector>
+	<fstream>
+	<climits>
+
+1261331450 source:/media/SOIER/FPI/FPI/trabalho 02/bib/EasyBMP.cpp
+	"EasyBMP.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/buffer_2d.cpp
+	<cstdlib>
+	<memory.h>
+	"buffer_2d.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/eigen.cpp
+	"eigen.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/eigen.h
+	"types.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/kht.cpp
+	"kht.h"
+	"linking.h"
+	"subdivision.h"
+	"voting.h"
+	"peak_detection.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/linking.h
+	"types.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/subdivision.h
+	"types.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/voting.h
+	"types.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/peak_detection.h
+	"types.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/linking.cpp
+	"linking.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/peak_detection.cpp
+	"buffer_2d.h"
+	"peak_detection.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/subdivision.cpp
+	<algorithm>
+	"subdivision.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/voting.cpp
+	<limits>
+	"voting.h"
+	"eigen.h"
+
+1261331490 source:/media/SOIER/FPI/FPI/trabalho 02/linearAlgebra.cpp
+	"linearAlgebra.h"
+	<iostream>
+	<cstdlib>
+	<cmath>
+
+1261394273 source:/media/SOIER/FPI/FPI/trabalho 02/main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<limits>
+	<algorithm>
+	"Imagem.h"
+	"BarCode.h"
+	"definitions.h"
+	"ascii.h"
+	"ConexComponent.h"
+	"texture.h"
+
+1261370478 /media/SOIER/FPI/FPI/trabalho 02/texture.h
+	<string>
+	"Imagem.h"
+
+1261370478 source:/media/SOIER/FPI/FPI/trabalho 02/texture.cpp
+	"texture.h"
+
+1261334844 source:g:\fpi\fpi\trabalho 02\barcode.cpp
+	<stdlib.h>
+	<iostream>
+	"BarCode.h"
+
+1261331490 g:\fpi\fpi\trabalho 02\barcode.h
+	"bib/EasyBMP.h"
+	"definitions.h"
+	"Imagem.h"
+	<vector>
+
+1261331450 g:\fpi\fpi\trabalho 02\bib\easybmp.h
+	<iostream>
+	<cmath>
+	<cctype>
+	<cstring>
+	<stdio.h>
+	<cstdio>
+	"EasyBMP_DataStructures.h"
+	"EasyBMP_BMP.h"
+	"EasyBMP_VariousBMPutilities.h"
+
+1261331450 g:\fpi\fpi\trabalho 02\bib\easybmp_datastructures.h
+
+1261331450 g:\fpi\fpi\trabalho 02\bib\easybmp_bmp.h
+
+1261331450 g:\fpi\fpi\trabalho 02\bib\easybmp_variousbmputilities.h
+
+1261394464 g:\fpi\fpi\trabalho 02\definitions.h
+
+1261374838 g:\fpi\fpi\trabalho 02\imagem.h
+	"bib/EasyBMP.h"
+	"kht/kht.h"
+	"definitions.h"
+	"linearAlgebra.h"
+	<vector>
+
+1261331446 g:\fpi\fpi\trabalho 02\kht\kht.h
+	"types.h"
+
+1261331446 g:\fpi\fpi\trabalho 02\kht\types.h
+	<cmath>
+	<cstdlib>
+	<memory.h>
+	"buffer_2d.h"
+
+1261331446 g:\fpi\fpi\trabalho 02\kht\buffer_2d.h
+	<cstdlib>
+
+1261331490 g:\fpi\fpi\trabalho 02\linearalgebra.h
+	"definitions.h"
+
+1261410478 source:g:\fpi\fpi\trabalho 02\conexcomponent.cpp
+	"ConexComponent.h"
+	<iostream>
+	<cmath>
+
+1261364330 g:\fpi\fpi\trabalho 02\conexcomponent.h
+	"bib/EasyBMP.h"
+	"Imagem.h"
+
+1261392460 source:g:\fpi\fpi\trabalho 02\imagem.cpp
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+	"ConexComponent.h"
+
+1261370478 source:g:\fpi\fpi\trabalho 02\imagemconvolution.cpp
+	"ImagemConvolution.h"
+	"kht/kht.h"
+
+1261331490 g:\fpi\fpi\trabalho 02\imagemconvolution.h
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+
+1261370478 source:g:\fpi\fpi\trabalho 02\imagemoperators.cpp
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+
+1261369458 source:g:\fpi\fpi\trabalho 02\ascii.cpp
+	"ascii.h"
+
+1261365274 g:\fpi\fpi\trabalho 02\ascii.h
+	"Imagem.h"
+	"ConexComponent.h"
+	<vector>
+	<fstream>
+	<climits>
+
+1261331450 source:g:\fpi\fpi\trabalho 02\bib\easybmp.cpp
+	"EasyBMP.h"
+
+1261331446 source:g:\fpi\fpi\trabalho 02\kht\buffer_2d.cpp
+	<cstdlib>
+	<memory.h>
+	"buffer_2d.h"
+
+1261331446 source:g:\fpi\fpi\trabalho 02\kht\eigen.cpp
+	"eigen.h"
+
+1261331446 g:\fpi\fpi\trabalho 02\kht\eigen.h
+	"types.h"
+
+1261331446 source:g:\fpi\fpi\trabalho 02\kht\kht.cpp
+	"kht.h"
+	"linking.h"
+	"subdivision.h"
+	"voting.h"
+	"peak_detection.h"
+
+1261331446 g:\fpi\fpi\trabalho 02\kht\linking.h
+	"types.h"
+
+1261331446 g:\fpi\fpi\trabalho 02\kht\subdivision.h
+	"types.h"
+
+1261331446 g:\fpi\fpi\trabalho 02\kht\voting.h
+	"types.h"
+
+1261331446 g:\fpi\fpi\trabalho 02\kht\peak_detection.h
+	"types.h"
+
+1261331446 source:g:\fpi\fpi\trabalho 02\kht\linking.cpp
+	"linking.h"
+
+1261331446 source:g:\fpi\fpi\trabalho 02\kht\peak_detection.cpp
+	"buffer_2d.h"
+	"peak_detection.h"
+
+1261331446 source:g:\fpi\fpi\trabalho 02\kht\subdivision.cpp
+	<algorithm>
+	"subdivision.h"
+
+1261331446 source:g:\fpi\fpi\trabalho 02\kht\voting.cpp
+	<limits>
+	"voting.h"
+	"eigen.h"
+
+1261331490 source:g:\fpi\fpi\trabalho 02\linearalgebra.cpp
+	"linearAlgebra.h"
+	<iostream>
+	<cstdlib>
+	<cmath>
+
+1261408106 source:g:\fpi\fpi\trabalho 02\texture.cpp
+	"texture.h"
+
+1261370478 g:\fpi\fpi\trabalho 02\texture.h
+	<string>
+	"Imagem.h"
+
+1261410552 source:g:\fpi\fpi\trabalho 02\main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<limits>
+	<algorithm>
+	"Imagem.h"
+	"BarCode.h"
+	"definitions.h"
+	"ascii.h"
+	"ConexComponent.h"
+	"texture.h"
+
+1261334844 source:/media/SOIER/FPI/FPI/trabalho 02/BarCode.cpp
+	<stdlib.h>
+	<iostream>
+	"BarCode.h"
+
+1261331490 /media/SOIER/FPI/FPI/trabalho 02/BarCode.h
+	"bib/EasyBMP.h"
+	"definitions.h"
+	"Imagem.h"
+	<vector>
+
+1261331450 /media/SOIER/FPI/FPI/trabalho 02/bib/EasyBMP.h
+	<iostream>
+	<cmath>
+	<cctype>
+	<cstring>
+	<stdio.h>
+	<cstdio>
+	"EasyBMP_DataStructures.h"
+	"EasyBMP_BMP.h"
+	"EasyBMP_VariousBMPutilities.h"
+
+1261331450 /media/SOIER/FPI/FPI/trabalho 02/bib/EasyBMP_DataStructures.h
+
+1261331450 /media/SOIER/FPI/FPI/trabalho 02/bib/EasyBMP_BMP.h
+
+1261331450 /media/SOIER/FPI/FPI/trabalho 02/bib/EasyBMP_VariousBMPutilities.h
+
+1261394464 /media/SOIER/FPI/FPI/trabalho 02/definitions.h
+
+1261374838 /media/SOIER/FPI/FPI/trabalho 02/Imagem.h
+	"bib/EasyBMP.h"
+	"kht/kht.h"
+	"definitions.h"
+	"linearAlgebra.h"
+	<vector>
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/kht.h
+	"types.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/types.h
+	<cmath>
+	<cstdlib>
+	<memory.h>
+	"buffer_2d.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/buffer_2d.h
+	<cstdlib>
+
+1261331490 /media/SOIER/FPI/FPI/trabalho 02/linearAlgebra.h
+	"definitions.h"
+
+1261410478 source:/media/SOIER/FPI/FPI/trabalho 02/ConexComponent.cpp
+	"ConexComponent.h"
+	<iostream>
+	<cmath>
+
+1261364330 /media/SOIER/FPI/FPI/trabalho 02/ConexComponent.h
+	"bib/EasyBMP.h"
+	"Imagem.h"
+
+1261392460 source:/media/SOIER/FPI/FPI/trabalho 02/Imagem.cpp
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+	"ConexComponent.h"
+
+1261370478 source:/media/SOIER/FPI/FPI/trabalho 02/ImagemConvolution.cpp
+	"ImagemConvolution.h"
+	"kht/kht.h"
+
+1261331490 /media/SOIER/FPI/FPI/trabalho 02/ImagemConvolution.h
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+
+1261370478 source:/media/SOIER/FPI/FPI/trabalho 02/ImagemOperators.cpp
+	<stdlib.h>
+	<iostream>
+	"Imagem.h"
+
+1261369458 source:/media/SOIER/FPI/FPI/trabalho 02/ascii.cpp
+	"ascii.h"
+
+1261365274 /media/SOIER/FPI/FPI/trabalho 02/ascii.h
+	"Imagem.h"
+	"ConexComponent.h"
+	<vector>
+	<fstream>
+	<climits>
+
+1261331450 source:/media/SOIER/FPI/FPI/trabalho 02/bib/EasyBMP.cpp
+	"EasyBMP.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/buffer_2d.cpp
+	<cstdlib>
+	<memory.h>
+	"buffer_2d.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/eigen.cpp
+	"eigen.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/eigen.h
+	"types.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/kht.cpp
+	"kht.h"
+	"linking.h"
+	"subdivision.h"
+	"voting.h"
+	"peak_detection.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/linking.h
+	"types.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/subdivision.h
+	"types.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/voting.h
+	"types.h"
+
+1261331446 /media/SOIER/FPI/FPI/trabalho 02/kht/peak_detection.h
+	"types.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/linking.cpp
+	"linking.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/peak_detection.cpp
+	"buffer_2d.h"
+	"peak_detection.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/subdivision.cpp
+	<algorithm>
+	"subdivision.h"
+
+1261331446 source:/media/SOIER/FPI/FPI/trabalho 02/kht/voting.cpp
+	<limits>
+	"voting.h"
+	"eigen.h"
+
+1261331490 source:/media/SOIER/FPI/FPI/trabalho 02/linearAlgebra.cpp
+	"linearAlgebra.h"
+	<iostream>
+	<cstdlib>
+	<cmath>
+
+1261412053 source:/media/SOIER/FPI/FPI/trabalho 02/main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<limits>
+	<algorithm>
+	"Imagem.h"
+	"BarCode.h"
+	"definitions.h"
+	"ascii.h"
+	"ConexComponent.h"
+	"texture.h"
+
+1261370478 /media/SOIER/FPI/FPI/trabalho 02/texture.h
+	<string>
+	"Imagem.h"
+
+1261413335 source:/media/SOIER/FPI/FPI/trabalho 02/texture.cpp
+	"texture.h"
 

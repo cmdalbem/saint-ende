@@ -566,13 +566,13 @@ float Imagem::bestLimiarByRegion(int x1, int x2, int y1, int y2)
     for (int i=y1; i < y2; ++i, quantos += 2)
     {
         m1 += image(x1,i)->Red;
-        m1 += image(x2,i)->Red;
+        m1 += image(x2-1,i)->Red;
     }
 
-    for (int i=x1+1; i < x2; ++i, quantos += 2)
+    for (int i=x1+1; i < x2-1; ++i, quantos += 2)
     {
         m1 += image(i,y1)->Red;
-        m1 += image(i,y2)->Red;
+        m1 += image(i,y2-1)->Red;
     }
     m1 /= quantos;
     //end média
@@ -581,8 +581,8 @@ float Imagem::bestLimiarByRegion(int x1, int x2, int y1, int y2)
     quantos = 0;
 
     //média dos elementos restantes
-    for (int i=x1+1; i < x2; ++i)
-        for (int j=y1+1; j < y2; ++j, ++quantos)
+    for (int i=x1+1; i < x2-1; ++i)
+        for (int j=y1+1; j < y2-1; ++j, ++quantos)
             m2 += image(i,j)->Red;
 
     m2 = m2/quantos;
@@ -596,8 +596,8 @@ float Imagem::bestLimiarByRegion(int x1, int x2, int y1, int y2)
         m1 = 0; m2 = 0;
         int quantos1 = 0, quantos2 = 0;
 
-        for (int i=x1; i <= x2; ++i)
-            for (int j=y1; j <= y2; ++j)
+        for (int i=x1; i < x2; ++i)
+            for (int j=y1; j < y2; ++j)
             {
                 if (image(i,j)->Red < latual)
                 {

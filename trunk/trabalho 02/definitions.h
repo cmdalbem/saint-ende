@@ -8,7 +8,7 @@
 #else
 #define PAUSE ;
 #define getch getchar // é triste, nao tenho getch()
-#define CLEAR_STRING "clear"
+#define CLEAR_STRING "lear"
 #endif
 
 
@@ -30,6 +30,8 @@
 #define BARDCODE_NBARS 67
 
 #define EPSOLON 0.00001
+
+#define N_DIVISIONS 2
 
 enum{
 

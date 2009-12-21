@@ -73,14 +73,19 @@ void menuTransformations()
     cout<<"11. Borders detection"<<endl;
     cout<<"12. Find And Tell Me The Bar Code Please"<<endl;
     cout<<"13. Find Internal Box Delimiters (use-me antes de procurar os componentes)"<<endl;
-    cout<<"14. Find Conex Components And Tell Me What Time Is It"<<endl;
+    cout<<"14. Find Conex Components"<<endl;
     cout<<"15. Spatial Mapping" << endl;
-    cout<<"16. Crazy Limiar" << endl;
-    cout<<"17. Find Edge" << endl;
+    //cout<<"16. Crazy Limiar" << endl;
+    //cout<<"17. Find Edge" << endl;
     cout<<"18. Negative" << endl;
-    cout<<"19. Let Apus show his hot naked body" << endl;
-    cout<<"20. KHT" << endl;
-    cout<<"21. Find Letter & Number" << endl;
+    cout<<"19. Texture" << endl;
+    //cout<<"20. KHT" << endl;
+    //cout<<"21. Find Letter & Number" << endl;
+    cout<<endl;
+    cout<<"20. Do It All For Me Please" << endl;
+
+
+
     cout<<"default: Cancel"<<endl;
     cout<<endl;
 
@@ -200,12 +205,13 @@ void menuTransformations()
                 const int maxComponents = 5;
                 bufferImage.findConexComponents(maxComponents);
 
-                vector<ConexComponent*>::iterator it;
-                for(it = bufferImage.conexComponents.begin(); it!=bufferImage.conexComponents.end(); it++) {
-                    cout<< (*it)->isClock(&limiarizada) <<endl;
-                    if( (*it)->isClock(&limiarizada) )
-                        cout << (*it)->tellTimeOfClock(&limiarizada) << endl;
-                }
+                //vector<ConexComponent*>::iterator it;
+                //for(it = bufferImage.conexComponents.begin(); it!=bufferImage.conexComponents.end(); it++) {
+//                    cout<< (*it)->isClock(&limiarizada) <<endl;
+                    //if( bufferImage.conexComponents[4]->isClock(&limiarizada) )
+                      //  cout << bufferImage.conexComponents[4]->tellTimeOfClock(&limiarizada) << endl;
+                    //(*it)->drawBoundingBox(&bufferImage);
+                //}
 
 
                 bufferImage = limiarizada;
@@ -231,73 +237,20 @@ void menuTransformations()
             //float lim = bufferImage.bestLimiar();
             //bufferImage.limiarize(lim);
 
-            int x1,x2,y1,y2;
+            int x1=0,x2=0,y1=0,y2=0;
             float lim;
 
-            x1=0;x2=bufferImage.getW()/4;y1=0;y2=bufferImage.getH()/4;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
+            for(int i = 1; i <= N_DIVISIONS; i++) {
+                x1=x2;
+                x2=i*bufferImage.getW()/N_DIVISIONS;
+                for(int j = 1, y2 = 0; j <= N_DIVISIONS; j++) {
+                    y1=y2;
+                    y2=j*bufferImage.getH()/N_DIVISIONS;
 
-            x1=x2+1;x2=bufferImage.getW()/2;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=x2+1;x2=3*bufferImage.getW()/4;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=x2+1;x2=bufferImage.getW()-1;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=0;x2=bufferImage.getW()/4;y1=y2+1;y2=bufferImage.getH()/2;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=x2+1;x2=bufferImage.getW()/2;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=x2+1;x2=3*bufferImage.getW()/4;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=x2+1;x2=bufferImage.getW()-1;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=0;x2=bufferImage.getW()/4;y1=y2+1;y2=3*bufferImage.getH()/4;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=x2+1;x2=bufferImage.getW()/2;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=x2+1;x2=3*bufferImage.getW()/4;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=x2+1;x2=bufferImage.getW()-1;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=0;x2=bufferImage.getW()/4;y1=y2+1;y2=bufferImage.getH()-1;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=x2+1;x2=bufferImage.getW()/2;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=x2+1;x2=3*bufferImage.getW()/4;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
-            x1=x2+1;x2=bufferImage.getW()-1;
-            lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
-            bufferImage.limiarizeRegion(x1,x2,y1,y2,lim);
-
+                    lim = bufferImage.bestLimiarByRegion(x1,x2,y1,y2);
+                    bufferImage.limiarizeRegion(x1,x2,y1,y1,lim);
+                }
+            }
             WAIT;
             break;
         }
@@ -336,7 +289,7 @@ void menuTransformations()
             	break;
             }
 
-        case 20:
+        case 22:
         {
             bufferImage.houghTransform();
             WAIT;
@@ -354,6 +307,82 @@ void menuTransformations()
             WAIT;
             break;
 	  	}
+	  	case 20:
+	  	{
+	  	    //find internal box
+                Imagem temp = bufferImage;
+                bufferImage.convertToGrayScale();
+                bufferImage.limiarize(200);
+                bufferImage.findInternalBox();
+                temp.setInternalFrameX1( bufferImage.getInternalFrameX1() );
+                temp.setInternalFrameX2( bufferImage.getInternalFrameX2() );
+                temp.setInternalFrameY1( bufferImage.getInternalFrameY1() );
+                temp.setInternalFrameY2( bufferImage.getInternalFrameY2() );
+                bufferImage = temp;
+
+                temp = bufferImage;
+                bufferImage.convertToGrayScale();
+                bufferImage.limiarize(200);
+                BarCode codigodebarras(bufferImage); //inicializa BarCode apenas com a imagem, então o construtor encontrará o código de barras pra nós
+                vector<int> result = codigodebarras.translateBarCode();
+                for(vector<int>::iterator it=result.begin(); it!=result.end(); it++)
+                    cout<<*it;
+                cout<<endl;
+
+                bufferImage = temp;
+
+            //find conex components
+                bufferImage.convertToGrayScale();
+                bufferImage.limiarize(200);
+                bufferImage.binaryInversion();
+                Imagem limiarizada = bufferImage;
+                bufferImage.fullDilate();
+                bufferImage -= limiarizada;
+
+                const int maxComponents = 5;
+                bufferImage.findConexComponents(maxComponents);
+
+            // clock
+                vector<ConexComponent*>::iterator it;
+                for(it = bufferImage.conexComponents.begin(); it!=bufferImage.conexComponents.end(); it++) {
+                    if( (*it)->isClock(&limiarizada) )
+                        cout << (*it)->tellTimeOfClock(&limiarizada) << endl;
+                }
+
+
+//            // texture
+//                int biggerComponent = 0;
+//                for(int i = 0; i < bufferImage.conexComponents.size(); ++i)
+//                    if( bufferImage.conexComponents[i]->getX2() - bufferImage.conexComponents[i]->getX1() >=
+//                            bufferImage.conexComponents[biggerComponent]->getX2() - bufferImage.conexComponents[biggerComponent]->getX1()
+//                        &&
+//                        bufferImage.conexComponents[i]->getY2() - bufferImage.conexComponents[i]->getY1() >=
+//                            bufferImage.conexComponents[biggerComponent]->getY2() - bufferImage.conexComponents[biggerComponent]->getY1()
+//                      )
+//                            biggerComponent = i;
+//
+//                cout << endl << "CELULA: " << findTexture(temp, bufferImage.conexComponents[biggerComponent]->getX1(), bufferImage.conexComponents[biggerComponent]->getY1()) << endl;
+//
+//                bufferImage = temp;
+
+
+
+
+                bufferImage = limiarizada;
+
+
+            //letter and number
+                bufferImage.negative();
+                vector<int> candidates = bufferImage.unknownComponents();
+
+                Ascii asciiFinder(&bufferImage, candidates);
+
+                cout << "Letter = " << asciiFinder.getLetter() << endl;
+                cout << "Number = " << asciiFinder.getNumber() << endl;
+
+	  	}
+	  	WAIT;
+	  	break;
     }
 }
 
